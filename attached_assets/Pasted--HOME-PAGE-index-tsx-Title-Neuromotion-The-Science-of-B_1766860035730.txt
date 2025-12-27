@@ -1,0 +1,181 @@
+🧠 HOME PAGE (index.tsx)
+
+Title
+
+Neuromotion
+The Science of Bilateral Human Movement
+
+Body
+
+Neuromotion is a scientific framework describing how human movement, balance, and energy transfer are governed by bilateral motor organization.
+
+Humans possess two hemispheres, two sides of the body, and two complete motor systems. Yet modern movement development overwhelmingly favors one side. Neuromotion identifies the consequences of this asymmetry and provides a structured path toward neuromotor balance.
+
+This platform exists to document, explain, and advance the study of Neuromotion and its applications through research, education, and training.
+
+⸻
+
+🧠 NEUROMOTION PAGE (neuromotion.tsx)
+
+Title
+
+What Is Neuromotion
+
+Body
+
+Neuromotion is the study of how energy, motion, and control flow through the human body via bilateral coordination.
+
+It recognizes that:
+	•	Movement is not isolated to muscles, but organized through neural pathways
+	•	Energy must be stabilized, directed, and expressed
+	•	The body operates through complementary roles across both sides
+
+Neuromotion introduces a unified model that explains how motion originates, how it is transferred, and why imbalance emerges when one side dominates execution while the other remains primarily stabilizing.
+
+⸻
+
+⚖️ THE SIX LAWS (six-laws.tsx)
+
+Title
+
+The Six Laws of Neuromotion
+
+Law 1 — The Base
+
+The stabilizing side responsible for grounding, weight distribution, and energy generation.
+
+Law 2 — The Anchor
+
+The executing side responsible for extension, direction, and task completion.
+
+Law 3 — Inner Grip
+
+The precision chain governing fine motor control, alignment, and accuracy.
+
+Law 4 — Outer Grip
+
+The power chain governing force, protection, and structural stability.
+
+Law 5 — The Ambi Curve
+
+The natural curved path through which energy transfers from Base to Anchor via spinal, hip, and rib alignment. Humans do not move linearly; motion follows arcs shaped by stabilization on one side and execution on the other.
+
+Law 6 — The Dynamic Balance Rule
+
+Precision and power must alternate across sides. When Inner Grip emphasizes on one side, Outer Grip must support on the opposite side to prevent energy leakage and instability.
+
+⸻
+
+🧠 NST PAGE (nst.tsx)
+
+Title
+
+Neuromotor Symmetry Training (NST)
+
+Body
+
+NST is the applied methodology derived from Neuromotion.
+
+It develops:
+	•	awareness of Base and Anchor roles
+	•	bilateral grip control
+	•	balanced energy transfer
+	•	symmetrical motor fluency
+
+NST does not force ambidexterity.
+It restores access to motor patterns that exist neurologically but are underutilized.
+
+⸻
+
+🔬 RESEARCH PAGE (research.tsx)
+
+Title
+
+Research Vision
+
+Body
+
+Neuromotion proposes that long-term unilateral motor dominance limits interhemispheric communication and motor adaptability.
+
+Future research pathways include:
+	•	motion capture analysis of bilateral Ambi Curves
+	•	EEG coherence studies
+	•	TMS mapping of motor cortex engagement
+	•	longitudinal motor development studies
+
+This work is intended to complement neuroscience, biomechanics, rehabilitation, and human performance research.
+
+⸻
+
+🏛️ FOUNDATION PAGE (foundation.tsx)
+
+Title
+
+Ambi Research Foundation
+
+Body
+
+The Ambi Research Foundation exists to support independent research, education, and public awareness related to Neuromotion.
+
+Its mission is to:
+	•	fund exploratory studies
+	•	promote balanced motor development
+	•	make neuromotor literacy accessible
+	•	support ethical, open research
+
+This is a research-first initiative.
+
+⸻
+
+💰 DONATE PAGE (donate.tsx)
+
+Title
+
+Support the Research
+
+Body
+
+Neuromotion research and education are currently independent.
+
+Donations support:
+	•	publication
+	•	research tools
+	•	educational content
+	•	platform development
+
+Transparency and accountability are core values.
+
+[Donate via Stripe / PayPal]
+
+⸻
+
+📬 CONTACT PAGE (contact.tsx)
+
+Title
+
+Contact
+
+Body
+
+For research inquiries, collaboration, or academic discussion:
+
+Email:
+contact@ambiresearch.org (placeholder)
+
+⸻
+
+🧩 HEADER / FOOTER CONTENT
+
+Header
+	•	Neuromotion
+	•	Six Laws
+	•	NST
+	•	Research
+	•	Foundation
+	•	Donate
+
+Footer
+
+© Ambi Research Foundation
+Neuromotion™
+All rights reserved
