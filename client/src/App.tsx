@@ -3,14 +3,28 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+
+import Home from "@/pages/Home";
+import Neuromotion from "@/pages/Neuromotion";
+import SixLaws from "@/pages/SixLaws";
+import Nst from "@/pages/Nst";
+import Research from "@/pages/Research";
+import Foundation from "@/pages/Foundation";
+import Donate from "@/pages/Donate";
+import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
-      {/* Add pages below */}
-      {/* <Route path="/" component={Home}/> */}
-      {/* Fallback to 404 */}
+      <Route path="/" component={Home} />
+      <Route path="/neuromotion" component={Neuromotion} />
+      <Route path="/six-laws" component={SixLaws} />
+      <Route path="/nst" component={Nst} />
+      <Route path="/research" component={Research} />
+      <Route path="/foundation" component={Foundation} />
+      <Route path="/donate" component={Donate} />
+      <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -20,8 +34,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
         <Router />
+        <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
   );
