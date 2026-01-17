@@ -1,63 +1,76 @@
 import { Layout } from "@/components/Layout";
 import { SectionHeader } from "@/components/SectionHeader";
 import { motion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
 
 const laws = [
   {
     number: "01",
     title: "The Base",
-    desc: "The stabilizing side responsible for grounding, weight distribution, and energy generation."
+    side: "STABILIZATION",
+    desc: "The grounding side responsible for weight distribution and energy generation. Without the Base, the Attack is hollow."
   },
   {
     number: "02",
     title: "The Anchor",
-    desc: "The executing side responsible for extension, direction, and task completion."
+    side: "EXECUTION",
+    desc: "The executing side responsible for extension, direction, and task completion. The Anchor is the expression of the Base's power."
   },
   {
     number: "03",
     title: "Inner Grip",
-    desc: "The precision chain governing fine motor control, alignment, and accuracy."
+    side: "PRECISION CHAIN",
+    desc: "The median nerve governs fine motor control. Cyan logic meets physical accuracy. thumb • index • middle."
   },
   {
     number: "04",
     title: "Outer Grip",
-    desc: "The power chain governing force, protection, and structural stability."
+    side: "POWER CHAIN",
+    desc: "The ulnar nerve builds stability and force. Orange creativity meets structural force. ring • pinky."
   },
   {
     number: "05",
     title: "The Ambi Curve",
-    desc: "The natural curved path through which energy transfers from Base to Anchor via spinal, hip, and rib alignment. Humans do not move linearly; motion follows arcs shaped by stabilization on one side and execution on the other."
+    side: "ENERGY FLOW",
+    desc: "Humans move in arcs, not lines. Energy transfers via spinal and hip alignment in a natural curved path."
   },
   {
     number: "06",
-    title: "The Dynamic Balance Rule",
-    desc: "Precision and power must alternate across sides. When Inner Grip emphasizes on one side, Outer Grip must support on the opposite side to prevent energy leakage and instability."
+    title: "Dynamic Balance",
+    side: "THE RULE",
+    desc: "Precision and power must alternate. When one side is Inside Grip, the other MUST be Outside Grip to prevent energy leakage."
   }
 ];
 
 export default function SixLaws() {
   return (
     <Layout>
-      <SectionHeader title="The Six Laws" subtitle="The fundamental principles governing bilateral human movement." />
+      <SectionHeader title="The Six Laws" subtitle="The immutable laws of bilateral organization and human motor fluency." />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {laws.map((law, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`
-              p-8 rounded-xl border transition-all duration-300
-              ${i >= 4 ? 'md:col-span-2 bg-secondary/30 border-primary/20' : 'bg-card border-border hover:shadow-lg hover:border-primary/30'}
-            `}
+            className="glass-panel p-10 rounded-sm relative group overflow-hidden"
           >
-            <span className="text-6xl font-display font-bold text-primary/10 mb-4 block">
-              {law.number}
-            </span>
-            <h3 className="text-2xl font-display font-bold mb-3">{law.title}</h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <div className={`absolute top-0 left-0 w-full h-1 transition-all duration-500 ${i % 2 === 0 ? 'bg-primary group-hover:h-2 glow-cyan' : 'bg-accent group-hover:h-2 glow-orange'}`} />
+            
+            <div className="flex justify-between items-start mb-6">
+              <span className="text-6xl font-black font-display text-white/5 group-hover:text-white/10 transition-colors">
+                {law.number}
+              </span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className={`w-4 h-4 ${i % 2 === 0 ? 'text-primary' : 'text-accent'}`} />
+                <span className="text-[10px] font-black uppercase tracking-widest opacity-60">{law.side}</span>
+              </div>
+            </div>
+
+            <h3 className="text-3xl font-display font-black mb-4 uppercase tracking-tighter group-hover:text-primary transition-colors">{law.title}</h3>
+            <p className="text-muted-foreground leading-relaxed font-medium text-sm">
               {law.desc}
             </p>
           </motion.div>

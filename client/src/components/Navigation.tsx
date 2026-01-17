@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { 
   Menu, X, Brain, Scale, Activity, 
-  BookOpen, Heart, Mail, Landmark
+  BookOpen, Heart, Mail, Landmark, Zap
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Home", icon: Brain },
   { href: "/neuromotion", label: "Neuromotion", icon: Activity },
   { href: "/six-laws", label: "The Six Laws", icon: Scale },
-  { href: "/nst", label: "NST", icon: Activity },
+  { href: "/nst", label: "NST", icon: Zap },
   { href: "/research", label: "Research", icon: BookOpen },
   { href: "/foundation", label: "Foundation", icon: Landmark },
   { href: "/donate", label: "Donate", icon: Heart },
@@ -25,11 +25,16 @@ export function Navigation() {
   return (
     <>
       {/* Mobile Toggle */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-border">
-        <span className="font-display font-bold text-xl tracking-tight text-primary">Ambi Elite</span>
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-foreground flex items-center justify-center rounded-sm">
+            <span className="text-background font-bold text-lg">A</span>
+          </div>
+          <span className="font-display font-bold text-xl tracking-tighter uppercase text-foreground">Ambi <span className="text-primary">Elite</span></span>
+        </div>
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 rounded-md hover:bg-secondary transition-colors"
+          className="p-2 rounded-md hover:bg-white/5 transition-colors"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -42,7 +47,7 @@ export function Navigation() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="fixed inset-0 z-40 bg-background lg:hidden pt-20 px-6"
+            className="fixed inset-0 z-40 bg-background lg:hidden pt-24 px-6"
           >
             <nav className="flex flex-col space-y-4">
               {NAV_ITEMS.map((item) => {
@@ -52,10 +57,10 @@ export function Navigation() {
                     key={item.href} 
                     href={item.href}
                     className={cn(
-                      "flex items-center space-x-4 p-3 rounded-lg text-lg font-medium transition-colors",
+                      "flex items-center space-x-4 p-4 rounded-lg text-lg font-bold uppercase tracking-tighter transition-all",
                       isActive 
-                        ? "bg-primary text-primary-foreground" 
-                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                        ? "bg-primary text-primary-foreground glow-cyan" 
+                        : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -70,15 +75,22 @@ export function Navigation() {
       </AnimatePresence>
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-64 flex-col border-r border-border bg-card">
-        <div className="p-8">
-          <h1 className="font-display font-bold text-2xl tracking-tighter text-foreground">
-            Ambi<span className="text-primary">Elite</span>
-          </h1>
-          <p className="text-xs text-muted-foreground mt-1 tracking-wider uppercase">Research Foundation</p>
+      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-72 flex-col border-r border-white/5 bg-background/50 backdrop-blur-xl">
+        <div className="p-10">
+          <Link href="/" className="group block">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 bg-foreground flex items-center justify-center rounded-sm transition-transform group-hover:scale-110">
+                <span className="text-background font-black text-2xl">A</span>
+              </div>
+              <h1 className="font-display font-black text-2xl tracking-tighter uppercase leading-none text-foreground">
+                Ambi<br/><span className="text-primary">Elite</span>
+              </h1>
+            </div>
+            <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-bold">The Global Standard</p>
+          </Link>
         </div>
 
-        <nav className="flex-1 px-4 space-y-1">
+        <nav className="flex-1 px-6 space-y-2">
           {NAV_ITEMS.map((item) => {
             const isActive = location === item.href;
             return (
@@ -86,15 +98,15 @@ export function Navigation() {
                 key={item.href} 
                 href={item.href}
                 className={cn(
-                  "flex items-center space-x-3 px-4 py-3 rounded-md text-sm font-medium transition-all duration-200 group",
+                  "flex items-center space-x-4 px-4 py-3 rounded-md text-xs font-bold uppercase tracking-widest transition-all duration-200 group",
                   isActive 
-                    ? "bg-primary/10 text-primary border-r-2 border-primary rounded-r-none" 
-                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                    ? "bg-primary/10 text-primary border-l-2 border-primary rounded-l-none" 
+                    : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
                 )}
               >
                 <item.icon className={cn(
-                  "w-4 h-4 transition-colors",
-                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                  "w-4 h-4 transition-transform group-hover:scale-110",
+                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"
                 )} />
                 <span>{item.label}</span>
               </Link>
@@ -102,9 +114,12 @@ export function Navigation() {
           })}
         </nav>
 
-        <div className="p-8 text-xs text-muted-foreground leading-relaxed">
-          <p>&copy; {new Date().getFullYear()} Ambi Research</p>
-          <p className="mt-2">Advancing the study of Bilateral Human Movement.</p>
+        <div className="p-10 text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
+          <div className="flex gap-4 mb-4">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span>Neuromotion Verified</span>
+          </div>
+          <p>&copy; {new Date().getFullYear()} Ambi Elite</p>
         </div>
       </aside>
     </>
