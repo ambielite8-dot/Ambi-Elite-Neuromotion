@@ -1,61 +1,89 @@
 import { Layout } from "@/components/Layout";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Heart, CreditCard, DollarSign } from "lucide-react";
+import { Heart, CreditCard, DollarSign, ShieldCheck, Globe } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Donate() {
   return (
     <Layout>
       <SectionHeader 
-        title="Support the Research" 
-        subtitle="Neuromotion research and education are currently independent."
+        title="Support Global Research" 
+        subtitle="Ambi Elite research and education initiatives are currently independent and globally accessible."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        <div className="space-y-8">
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Your donation directly supports the advancement of this science. Contributions are used for:
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-12">
+        <div className="space-y-12">
+          <p className="text-2xl text-foreground font-bold leading-tight max-w-xl">
+            Your contribution accelerates the <span className="text-primary italic">Neuromotion Revolution</span>.
           </p>
           
-          <ul className="space-y-4 text-foreground/80">
-            {["Publication of findings", "Research tools and equipment", "Educational content creation", "Platform development"].map((item, i) => (
-              <li key={i} className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-primary" />
-                {item}
-              </li>
+          <div className="grid grid-cols-1 gap-6">
+            {[
+              { title: "Scientific Publication", desc: "Funding the peer-reviewed release of bilateral movement discoveries." },
+              { title: "Advanced Equipment", desc: "Investing in high-speed motion capture and EEG imaging tools." },
+              { title: "Global Literacy", desc: "Creating free educational content for schools and elite sports academies." }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-start gap-4"
+              >
+                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mt-1 flex-shrink-0">
+                  <div className="w-2 h-2 rounded-full bg-primary glow-cyan" />
+                </div>
+                <div>
+                  <h4 className="font-black uppercase tracking-tighter text-sm mb-1">{item.title}</h4>
+                  <p className="text-muted-foreground text-sm font-medium">{item.desc}</p>
+                </div>
+              </motion.div>
             ))}
-          </ul>
+          </div>
 
-          <div className="p-6 bg-secondary/30 rounded-lg border border-border">
-            <p className="text-sm text-muted-foreground font-medium uppercase tracking-wide mb-2">Core Values</p>
-            <p className="text-xl font-display font-bold">Transparency and accountability are core values.</p>
+          <div className="p-10 glass-panel rounded-sm border-primary/20 bg-primary/5">
+            <ShieldCheck className="w-10 h-10 text-primary mb-6" />
+            <p className="text-[10px] text-primary font-black uppercase tracking-[0.4em] mb-4">Integrity Protocol</p>
+            <p className="text-2xl font-display font-black uppercase tracking-tighter italic">Transparency and accountability are core values.</p>
           </div>
         </div>
 
-        <div className="bg-card rounded-2xl p-8 border border-border shadow-lg shadow-black/5">
-          <h3 className="text-2xl font-display font-bold mb-6">Make a Contribution</h3>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="glass-panel p-12 rounded-sm border-white/10 shadow-3xl relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 p-4 opacity-5">
+             <Globe size={150} />
+          </div>
           
-          <div className="space-y-4">
+          <h3 className="text-3xl font-display font-black mb-8 uppercase tracking-tighter italic">Contribute</h3>
+          
+          <div className="space-y-6">
             <button 
               disabled
-              className="w-full py-4 px-6 rounded-xl bg-[#635BFF] text-white font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity cursor-not-allowed opacity-70"
+              className="w-full py-6 px-8 rounded-sm bg-primary text-primary-foreground font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:scale-[1.02] transition-all duration-300 cursor-not-allowed opacity-50 glow-cyan"
             >
-              <CreditCard className="w-5 h-5" />
-              Donate via Stripe (Coming Soon)
+              <CreditCard className="w-6 h-6" />
+              Stripe Secure
             </button>
             
             <button 
               disabled
-              className="w-full py-4 px-6 rounded-xl bg-[#0070BA] text-white font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity cursor-not-allowed opacity-70"
+              className="w-full py-6 px-8 rounded-sm border-2 border-white/10 text-foreground font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-white/5 transition-all duration-300 cursor-not-allowed opacity-50"
             >
-              <DollarSign className="w-5 h-5" />
-              Donate via PayPal (Coming Soon)
+              <DollarSign className="w-6 h-6" />
+              PayPal Official
             </button>
           </div>
           
-          <p className="text-xs text-center text-muted-foreground mt-6">
-            Secure payment processing provided by Stripe and PayPal.
-          </p>
-        </div>
+          <div className="mt-10 flex items-center justify-center gap-8 opacity-40">
+             <div className="h-px bg-white/20 flex-1" />
+             <span className="text-[10px] font-black uppercase tracking-widest whitespace-nowrap">Secure Gateway</span>
+             <div className="h-px bg-white/20 flex-1" />
+          </div>
+        </motion.div>
       </div>
     </Layout>
   );
