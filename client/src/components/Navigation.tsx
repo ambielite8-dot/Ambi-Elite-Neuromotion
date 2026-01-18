@@ -36,7 +36,6 @@ export function Navigation() {
               style={{ filter: 'invert(1) brightness(2) contrast(1.2)' }}
             />
           </div>
-          <span className="font-display font-black text-2xl tracking-tighter uppercase text-foreground whitespace-nowrap">Ambi <span className="text-primary">Elite</span></span>
         </Link>
         <button 
           onClick={() => setIsOpen(!isOpen)}
@@ -92,9 +91,6 @@ export function Navigation() {
                 style={{ filter: 'invert(1) brightness(2) contrast(1.2)' }}
               />
             </div>
-            <h1 className="font-display font-black text-3xl tracking-tighter uppercase leading-none text-foreground text-center">
-              Ambi<br/><span className="text-primary">Elite</span>
-            </h1>
           </Link>
           <div className="w-full h-px bg-white/5 mb-8" />
         </div>
