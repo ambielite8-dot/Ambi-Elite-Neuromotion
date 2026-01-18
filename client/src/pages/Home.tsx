@@ -88,24 +88,35 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative"
+          className="relative group"
         >
-          <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10" />
-          <img src={brainIntegrationImg} alt="Brain Integration Diagram" className="rounded-sm border border-white/10 glow-cyan shadow-2xl" />
+          <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 group-hover:bg-primary/30 transition-all" />
+          <img 
+            src={brainIntegrationImg} 
+            alt="Brain Integration Diagram" 
+            className="rounded-sm border border-white/10 glow-cyan shadow-2xl mix-blend-lighten" 
+            style={{ filter: 'contrast(1.1) brightness(1.1)' }}
+          />
         </motion.div>
       </section>
 
       {/* Benefits for Kids & Adults */}
       <section className="mt-40 space-y-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <motion.img 
+          <motion.div 
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            src={kidsBenefitsImg} 
-            alt="Benefits for Kids" 
-            className="rounded-sm border border-white/10 shadow-2xl" 
-          />
+            className="relative group"
+          >
+            <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
+            <img 
+              src={kidsBenefitsImg} 
+              alt="Benefits for Kids" 
+              className="rounded-sm border border-white/10 shadow-2xl mix-blend-lighten" 
+              style={{ filter: 'contrast(1.1) brightness(1.1)' }}
+            />
+          </motion.div>
           <div>
             <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Learning</span> plus Development</h3>
             <div className="space-y-8">
@@ -147,14 +158,20 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <motion.img 
+          <motion.div 
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            src={adultsBenefitsImg} 
-            alt="Benefits for Adults" 
-            className="rounded-sm border border-white/10 shadow-2xl order-1 md:order-2" 
-          />
+            className="relative group order-1 md:order-2"
+          >
+            <div className="absolute inset-0 bg-accent/10 blur-3xl -z-10" />
+            <img 
+              src={adultsBenefitsImg} 
+              alt="Benefits for Adults" 
+              className="rounded-sm border border-white/10 shadow-2xl mix-blend-lighten" 
+              style={{ filter: 'contrast(1.1) brightness(1.1)' }}
+            />
+          </motion.div>
         </div>
       </section>
 

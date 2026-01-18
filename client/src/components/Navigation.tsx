@@ -26,16 +26,23 @@ export function Navigation() {
   return (
     <>
       {/* Mobile Toggle */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5 h-20">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5 h-24">
         <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 h-full">
-          <img src={logoImg} alt="Ambi Elite Logo" className="h-16 w-auto invert object-contain" style={{ clipPath: 'inset(0 0 35% 0)' }} />
-          <span className="font-display font-black text-xl tracking-tighter uppercase text-foreground whitespace-nowrap">Ambi <span className="text-primary">Elite</span></span>
+          <div className="h-20 w-auto overflow-hidden flex items-center">
+            <img 
+              src={logoImg} 
+              alt="Ambi Elite Logo" 
+              className="h-32 w-auto invert brightness-200 mix-blend-screen object-contain" 
+              style={{ filter: 'invert(1) brightness(2) contrast(1.2)' }}
+            />
+          </div>
+          <span className="font-display font-black text-2xl tracking-tighter uppercase text-foreground whitespace-nowrap">Ambi <span className="text-primary">Elite</span></span>
         </Link>
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 rounded-md hover:bg-white/5 transition-colors"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
 
@@ -46,7 +53,7 @@ export function Navigation() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="fixed inset-0 z-40 bg-background lg:hidden pt-24 px-6"
+            className="fixed inset-0 z-40 bg-background lg:hidden pt-32 px-6"
           >
             <nav className="flex flex-col space-y-4">
               {NAV_ITEMS.map((item) => {
@@ -63,7 +70,7 @@ export function Navigation() {
                     )}
                     onClick={() => setIsOpen(false)}
                   >
-                    <item.icon className="w-5 h-5" />
+                    <item.icon className="w-6 h-6" />
                     <span>{item.label}</span>
                   </Link>
                 );
@@ -74,20 +81,22 @@ export function Navigation() {
       </AnimatePresence>
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-72 flex-col border-r border-white/5 bg-background/50 backdrop-blur-xl">
+      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-80 flex-col border-r border-white/5 bg-background/50 backdrop-blur-xl">
         <div className="p-8 flex flex-col items-center">
-          <Link href="/" className="group flex items-center gap-4 mb-6 w-full">
-            <img 
-              src={logoImg} 
-              alt="Ambi Elite Logo" 
-              className="w-20 h-auto invert transition-transform group-hover:scale-105 object-contain" 
-              style={{ clipPath: 'inset(0 0 35% 0)' }}
-            />
-            <h1 className="font-display font-black text-2xl tracking-tighter uppercase leading-none text-foreground">
+          <Link href="/" className="group flex flex-col items-center gap-4 mb-8 w-full">
+            <div className="w-full flex justify-center overflow-hidden h-32 items-center">
+              <img 
+                src={logoImg} 
+                alt="Ambi Elite Logo" 
+                className="w-56 h-auto invert brightness-200 mix-blend-screen transition-transform group-hover:scale-105 object-contain" 
+                style={{ filter: 'invert(1) brightness(2) contrast(1.2)' }}
+              />
+            </div>
+            <h1 className="font-display font-black text-3xl tracking-tighter uppercase leading-none text-foreground text-center">
               Ambi<br/><span className="text-primary">Elite</span>
             </h1>
           </Link>
-          <div className="w-full h-px bg-white/5 mb-6" />
+          <div className="w-full h-px bg-white/5 mb-8" />
         </div>
 
         <nav className="flex-1 px-6 space-y-2">
@@ -105,7 +114,7 @@ export function Navigation() {
                 )}
               >
                 <item.icon className={cn(
-                  "w-4 h-4 transition-transform group-hover:scale-110",
+                  "w-5 h-5 transition-transform group-hover:scale-110",
                   isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"
                 )} />
                 <span>{item.label}</span>

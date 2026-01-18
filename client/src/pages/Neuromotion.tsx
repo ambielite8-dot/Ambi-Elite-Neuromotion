@@ -46,8 +46,14 @@ export default function Neuromotion() {
           <Brain size={300} />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <img src={brainComparisonImg} alt="Neural Pathways Mapping" className="rounded-sm border border-white/5 glow-orange shadow-2xl" />
+          <div className="order-2 md:order-1 relative group">
+            <div className="absolute inset-0 bg-accent/10 blur-2xl -z-10 group-hover:bg-accent/20 transition-all" />
+            <img 
+              src={brainComparisonImg} 
+              alt="Neural Pathways Mapping" 
+              className="rounded-sm border border-white/5 glow-orange shadow-2xl mix-blend-lighten" 
+              style={{ filter: 'contrast(1.2) brightness(1.1)' }}
+            />
           </div>
           <div className="order-1 md:order-2">
             <h3 className="text-4xl font-black uppercase italic mb-6 tracking-tighter">Open Neural<br/><span className="text-accent">Pathways</span></h3>
