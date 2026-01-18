@@ -75,7 +75,7 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 gap-6">
             <div className="p-6 glass-panel border-white/5">
-              <h4 className="font-black text-primary uppercase text-xs mb-2 tracking-widest">Logic</h4>
+              <h4 className="font-black text-primary uppercase text-xs mb-2 tracking-widest">Focused</h4>
               <p className="text-[10px] uppercase font-bold text-muted-foreground">Sequencing & Detail</p>
             </div>
             <div className="p-6 glass-panel border-white/5">

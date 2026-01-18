@@ -13,7 +13,7 @@ export default function Neuromotion() {
       icon: Target,
       color: "text-primary",
       borderColor: "border-primary",
-      body: "Governed by the median nerve. Handles logic, sequencing, and fine motor control. The thumb, index, and middle fingers form the bridge to the mind's analytical center."
+      body: "Governed by the median nerve. Handles sequencing, detail, and fine motor control. The thumb, index, and middle fingers form the bridge to the mind's analytical and focused center."
     },
     {
       title: "Power Chain",
@@ -56,7 +56,7 @@ export default function Neuromotion() {
               ultimate cognitive enhancer.
             </p>
             <div className="flex gap-4">
-               <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-sm text-[10px] font-black uppercase tracking-widest text-primary">Logic & Control</div>
+               <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-sm text-[10px] font-black uppercase tracking-widest text-primary">Sequencing & Detail</div>
                <div className="px-4 py-2 bg-accent/10 border border-accent/20 rounded-sm text-[10px] font-black uppercase tracking-widest text-accent">Creativity & Flow</div>
             </div>
           </div>
