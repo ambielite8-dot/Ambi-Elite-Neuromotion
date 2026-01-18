@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import logoImg from "@assets/IMG_2737_1768704291952.jpeg";
+import logoImg from "@assets/IMG_2736_1768707271363.jpeg";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home", icon: Brain },
@@ -27,13 +27,13 @@ export function Navigation() {
     <>
       {/* Mobile Toggle */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5 h-24">
-        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 h-full">
-          <div className="h-full w-auto flex items-center overflow-hidden">
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 h-full overflow-hidden">
+          <div className="h-full w-auto flex items-center">
             <img 
               src={logoImg} 
               alt="Ambi Elite Logo" 
-              className="h-[120%] w-auto invert brightness-200 mix-blend-screen object-contain" 
-              style={{ filter: 'invert(1) brightness(2) contrast(1.2)', transform: 'translateY(-10%)' }}
+              className="h-[180%] w-auto object-contain" 
+              style={{ transform: 'translateY(-18%)' }}
             />
           </div>
           <span className="font-display font-black text-2xl tracking-tighter uppercase text-foreground whitespace-nowrap">Ambi <span className="text-primary">Elite</span></span>
@@ -88,8 +88,8 @@ export function Navigation() {
               <img 
                 src={logoImg} 
                 alt="Ambi Elite Logo" 
-                className="h-[140%] w-auto invert brightness-200 mix-blend-screen transition-transform group-hover:scale-105 object-contain" 
-                style={{ filter: 'invert(1) brightness(2) contrast(1.2)', transform: 'translateY(-10%)' }}
+                className="h-[200%] w-auto transition-transform group-hover:scale-105 object-contain" 
+                style={{ transform: 'translateY(-20%)' }}
               />
             </div>
             <h1 className="font-display font-black text-2xl tracking-tighter uppercase leading-none text-foreground whitespace-nowrap">
