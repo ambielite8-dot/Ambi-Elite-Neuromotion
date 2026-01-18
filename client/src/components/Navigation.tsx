@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import logoImg from "@assets/IMG_2737_1768704291952.jpeg";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home", icon: Brain },
@@ -27,9 +28,7 @@ export function Navigation() {
       {/* Mobile Toggle */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-foreground flex items-center justify-center rounded-sm">
-            <span className="text-background font-bold text-lg">A</span>
-          </div>
+          <img src={logoImg} alt="Ambi Elite Logo" className="w-8 h-8 invert" />
           <span className="font-display font-bold text-xl tracking-tighter uppercase text-foreground">Ambi <span className="text-primary">Elite</span></span>
         </div>
         <button 
@@ -79,9 +78,7 @@ export function Navigation() {
         <div className="p-10">
           <Link href="/" className="group block">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-foreground flex items-center justify-center rounded-sm transition-transform group-hover:scale-110">
-                <span className="text-background font-black text-2xl">A</span>
-              </div>
+              <img src={logoImg} alt="Ambi Elite Logo" className="w-12 h-12 invert transition-transform group-hover:scale-110" />
               <h1 className="font-display font-black text-2xl tracking-tighter uppercase leading-none text-foreground">
                 Ambi<br/><span className="text-primary">Elite</span>
               </h1>

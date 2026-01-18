@@ -2,7 +2,8 @@ import { Layout } from "@/components/Layout";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Activity, Zap, Target } from "lucide-react";
+import { Activity, Zap, Target, Brain } from "lucide-react";
+import brainComparisonImg from "@assets/IMG_0022_1768704291952.jpeg";
 
 export default function Neuromotion() {
   const points = [
@@ -23,12 +24,12 @@ export default function Neuromotion() {
       body: "Governed by the ulnar nerve. Handles creativity, flow, and explosive force generation. The ring and pinky fingers engage the body's structural power line."
     },
     {
-      title: "Dynamic Synchronization",
-      subtitle: "The Bridge",
-      icon: Activity,
+      title: "Neural Integration",
+      subtitle: "Cognitive Synergy",
+      icon: Brain,
       color: "text-foreground",
       borderColor: "border-white/20",
-      body: "True balance is achieved only when the body can seamlessly switch roles between the Attack side and the Base side in perfect synchrony."
+      body: "The way to unlock the mind is by gaining complete control of the body. By training both sides, we force the corpus callosum to integrate hemispheres, creating neural coherence."
     }
   ];
 
@@ -38,6 +39,29 @@ export default function Neuromotion() {
         title="The Neuromotion Engine" 
         subtitle="The revolutionary study of how energy, motion, and control flow through the human body via bilateral coordination."
       />
+
+      {/* Science Spotlight */}
+      <section className="mb-32 glass-panel p-12 rounded-sm border-white/10 overflow-hidden relative">
+        <div className="absolute top-0 right-0 p-8 opacity-5">
+          <Brain size={300} />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <img src={brainComparisonImg} alt="Neural Pathways Mapping" className="rounded-sm border border-white/5 glow-orange shadow-2xl" />
+          </div>
+          <div className="order-1 md:order-2">
+            <h3 className="text-4xl font-black uppercase italic mb-6 tracking-tighter">Open Neural<br/><span className="text-accent">Pathways</span></h3>
+            <p className="text-muted-foreground text-xl font-medium leading-relaxed mb-6">
+              For centuries, we debated mind vs. body. Neuromotion proves they are unified. Complete body control is the 
+              ultimate cognitive enhancer.
+            </p>
+            <div className="flex gap-4">
+               <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-sm text-[10px] font-black uppercase tracking-widest text-primary">Logic & Control</div>
+               <div className="px-4 py-2 bg-accent/10 border border-accent/20 rounded-sm text-[10px] font-black uppercase tracking-widest text-accent">Creativity & Flow</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="grid gap-10 mb-20">
         {points.map((point, idx) => (
@@ -65,10 +89,9 @@ export default function Neuromotion() {
       </div>
 
       <div className="glass-panel p-12 rounded-sm border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5">
-        <h3 className="text-3xl font-display font-black mb-6 uppercase leading-none">A Global<br/><span className="text-primary text-glow-cyan text-4xl">Scientific Standard</span></h3>
-        <p className="text-xl text-foreground font-medium leading-relaxed">
-          Ambi Elite strengthens the bridge between hemispheres. Faster decisions, smoother balance, and total synchronization are no 
-          longer accidental—they are engineered.
+        <h3 className="text-3xl font-display font-black mb-6 uppercase leading-none">A Unified<br/><span className="text-primary text-glow-cyan text-4xl">Mind-Body Model</span></h3>
+        <p className="text-xl text-foreground font-medium leading-relaxed italic">
+          "The way to unlock the mind is through the body, and the way to unlock the body is through the mind. Beautiful things happen when they meet at the bridge."
         </p>
       </div>
     </Layout>

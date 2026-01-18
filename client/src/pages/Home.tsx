@@ -1,7 +1,10 @@
 import { Layout } from "@/components/Layout";
 import { motion } from "framer-motion";
-import { ArrowRight, Brain, Zap, Scale, Globe, ShieldCheck, Activity } from "lucide-react";
+import { ArrowRight, Brain, Zap, Scale, Globe, ShieldCheck, Activity, GraduationCap, Heart, Rocket } from "lucide-react";
 import { Link } from "wouter";
+import brainIntegrationImg from "@assets/IMG_0026_1768704291952.jpeg";
+import kidsBenefitsImg from "@assets/IMG_0019_1768704291952.jpeg";
+import adultsBenefitsImg from "@assets/IMG_0020_1768704291952.jpeg";
 
 export default function Home() {
   return (
@@ -22,11 +25,11 @@ export default function Home() {
             A Global Neurological Discovery
           </span>
           <h1 className="font-display text-7xl md:text-9xl font-black tracking-tighter text-foreground mb-4 leading-[0.85] uppercase italic">
-            True<br/>
-            <span className="text-primary text-glow-cyan">Ambidexterity</span>
+            Mind & Body<br/>
+            <span className="text-primary text-glow-cyan text-6xl md:text-8xl">Unified</span>
           </h1>
           <p className="font-display text-2xl md:text-4xl text-foreground font-bold max-w-4xl mx-auto leading-tight mb-12 uppercase tracking-tighter">
-            The rarest skill on earth. <span className="text-accent italic">Unlocked.</span>
+            Unlock the mind through the body. <span className="text-accent italic">The Corpus Callosum Bridge.</span>
           </p>
         </motion.div>
 
@@ -37,8 +40,8 @@ export default function Home() {
           className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed space-y-8"
         >
           <p className="font-medium text-xl text-foreground/80">
-            Neuromotion is the revolutionary scientific framework governing human movement, balance, and energy transfer through 
-            bilateral motor organization.
+            Neuromotion is the revolutionary scientific framework proving that the way to unlock the mind is by gaining complete control 
+            of the body. We integrate the hemispheres to achieve total human potential.
           </p>
           
           <div className="pt-8 flex flex-col sm:flex-row justify-center gap-6">
@@ -58,78 +61,108 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Discovery Section */}
-      <section className="mt-32 glass-panel p-12 rounded-sm border-primary/20 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-1 h-full bg-primary glow-cyan" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl font-black mb-6 leading-none">The Asymmetry<br/><span className="text-primary">Problem</span></h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              Humans possess two hemispheres and two complete motor systems. Yet modern development overwhelmingly favors one side, 
-              limiting neural coherence and physical potential.
-            </p>
-            <div className="space-y-4">
-              {[
-                "Neural Path Obstruction",
-                "Linear Motion Limitations",
-                "Unilateral Energy Leakage"
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <ShieldCheck className="text-primary w-5 h-5" />
-                  <span className="font-bold text-sm uppercase tracking-widest">{item}</span>
-                </div>
-              ))}
+      {/* Brain Integration Section */}
+      <section className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-5xl font-black mb-8 uppercase leading-none italic">The Corpus<br/><span className="text-primary text-glow-cyan">Callosum Bridge</span></h2>
+          <p className="text-muted-foreground text-xl leading-relaxed mb-8 font-medium">
+            The corpus callosum is the neural highway that integrates the two hemispheres. Ambi Elite training strengthens this bridge, 
+            enabling faster decisions, smoother balance, and total synchronization.
+          </p>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="p-6 glass-panel border-white/5">
+              <h4 className="font-black text-primary uppercase text-xs mb-2 tracking-widest">Logic</h4>
+              <p className="text-[10px] uppercase font-bold text-muted-foreground">Sequencing & Detail</p>
+            </div>
+            <div className="p-6 glass-panel border-white/5">
+              <h4 className="font-black text-accent uppercase text-xs mb-2 tracking-widest">Creativity</h4>
+              <p className="text-[10px] uppercase font-bold text-muted-foreground">Flow & Intuition</p>
             </div>
           </div>
-          <div className="relative aspect-square bg-white/5 rounded-sm border border-white/5 flex items-center justify-center group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <Brain className="w-48 h-48 text-primary group-hover:scale-110 transition-transform duration-500" />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10" />
+          <img src={brainIntegrationImg} alt="Brain Integration Diagram" className="rounded-sm border border-white/10 glow-cyan shadow-2xl" />
+        </motion.div>
+      </section>
+
+      {/* Benefits for Kids & Adults */}
+      <section className="mt-40 space-y-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <motion.img 
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            src={kidsBenefitsImg} 
+            alt="Benefits for Kids" 
+            className="rounded-sm border border-white/10 shadow-2xl" 
+          />
+          <div>
+            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Learning</span> & Development</h3>
+            <div className="space-y-8">
+              <div className="flex gap-6">
+                <GraduationCap className="w-10 h-10 text-primary flex-shrink-0" />
+                <div>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Accelerated Learning</h4>
+                  <p className="text-muted-foreground font-medium">Activates both hemispheres, making children more adaptable, creative, and focused.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <ShieldCheck className="w-10 h-10 text-primary flex-shrink-0" />
+                <div>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Confidence & Discipline</h4>
+                  <p className="text-muted-foreground font-medium">Mastering unique skills instills self-assurance and the reward of steady progress.</p>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="order-2 md:order-1">
+            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-accent">Performance</span> & Longevity</h3>
+            <div className="space-y-8">
+              <div className="flex gap-6">
+                <Rocket className="w-10 h-10 text-accent flex-shrink-0" />
+                <div>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Sharpness & Performance</h4>
+                  <p className="text-muted-foreground font-medium">Strengthen the mind-body connection to drive results in sports and professional life.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <Heart className="w-10 h-10 text-accent flex-shrink-0" />
+                <div>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Active Longevity</h4>
+                  <p className="text-muted-foreground font-medium">Enhance coordination and reduce joint strain for lifelong health and mobility.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <motion.img 
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            src={adultsBenefitsImg} 
+            alt="Benefits for Adults" 
+            className="rounded-sm border border-white/10 shadow-2xl order-1 md:order-2" 
+          />
         </div>
       </section>
 
-      {/* Feature Grid */}
-      <section className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {[
-          {
-            icon: Globe,
-            title: "Global Impact",
-            desc: "A scientific methodology reshaping sports, rehabilitation, and cognitive performance worldwide.",
-            color: "text-primary"
-          },
-          {
-            icon: Zap,
-            title: "The Power Chain",
-            desc: "Unlocking the ulnar nerve and outer grip for explosive force generation.",
-            color: "text-accent"
-          },
-          {
-            icon: Activity,
-            title: "Neural Symmetery",
-            desc: "Restoring 1:1 motor fluency to create the complete human athlete.",
-            color: "text-primary"
-          }
-        ].map((feature, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="p-10 glass-panel rounded-sm hover:border-primary/50 transition-all group"
-          >
-            <feature.icon className={`w-12 h-12 ${feature.color} mb-6 group-hover:scale-110 transition-transform`} />
-            <h3 className="font-display text-2xl font-black mb-4 uppercase">{feature.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed font-medium">{feature.desc}</p>
-          </motion.div>
-        ))}
-      </section>
-      
       {/* Slogan */}
       <section className="mt-40 text-center py-20 border-y border-white/5">
         <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic mb-4">
-          Train Both Sides.<br/>
-          <span className="text-primary text-glow-cyan">Unlock the whole mind.</span>
+          Unlocking the Body.<br/>
+          <span className="text-primary text-glow-cyan text-4xl md:text-6xl">Unlocking the Mind.</span>
         </h2>
       </section>
     </Layout>
