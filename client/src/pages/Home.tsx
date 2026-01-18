@@ -25,11 +25,11 @@ export default function Home() {
             A Global Neurological Discovery
           </span>
           <h1 className="font-display text-7xl md:text-9xl font-black tracking-tighter text-foreground mb-4 leading-[0.85] uppercase italic">
-            Mind & Body<br/>
-            <span className="text-primary text-glow-cyan text-6xl md:text-8xl">Unified</span>
+            Coherent<br/>
+            <span className="text-primary text-glow-cyan text-6xl md:text-8xl">Integration</span>
           </h1>
           <p className="font-display text-2xl md:text-4xl text-foreground font-bold max-w-4xl mx-auto leading-tight mb-12 uppercase tracking-tighter">
-            Unlock the mind through the body. <span className="text-accent italic">The Corpus Callosum Bridge.</span>
+            Harness the body to elevate the mind. <span className="text-accent italic">The Corpus Callosum Evolution.</span>
           </p>
         </motion.div>
 
@@ -40,8 +40,8 @@ export default function Home() {
           className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed space-y-8"
         >
           <p className="font-medium text-xl text-foreground/80">
-            Neuromotion is the revolutionary scientific framework proving that the way to unlock the mind is by gaining complete control 
-            of the body. We integrate the hemispheres to achieve total human potential.
+            Neuromotion represents a paradigm shift: true cognitive mastery is achieved through absolute physical discipline. 
+            We bridge the hemispheres to unlock the next stage of human evolution.
           </p>
           
           <div className="pt-8 flex flex-col sm:flex-row justify-center gap-6">
@@ -107,7 +107,7 @@ export default function Home() {
             className="rounded-sm border border-white/10 shadow-2xl" 
           />
           <div>
-            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Learning</span> & Development</h3>
+            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Learning</span> plus Development</h3>
             <div className="space-y-8">
               <div className="flex gap-6">
                 <GraduationCap className="w-10 h-10 text-primary flex-shrink-0" />
@@ -119,7 +119,7 @@ export default function Home() {
               <div className="flex gap-6">
                 <ShieldCheck className="w-10 h-10 text-primary flex-shrink-0" />
                 <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Confidence & Discipline</h4>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Confidence plus Discipline</h4>
                   <p className="text-muted-foreground font-medium">Mastering unique skills instills self-assurance and the reward of steady progress.</p>
                 </div>
               </div>
@@ -129,12 +129,12 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
-            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-accent">Performance</span> & Longevity</h3>
+            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-accent">Performance</span> plus Longevity</h3>
             <div className="space-y-8">
               <div className="flex gap-6">
                 <Rocket className="w-10 h-10 text-accent flex-shrink-0" />
                 <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Sharpness & Performance</h4>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Sharpness plus Performance</h4>
                   <p className="text-muted-foreground font-medium">Strengthen the mind-body connection to drive results in sports and professional life.</p>
                 </div>
               </div>
@@ -161,8 +161,8 @@ export default function Home() {
       {/* Slogan */}
       <section className="mt-40 text-center py-20 border-y border-white/5">
         <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic mb-4">
-          Unlocking the Body.<br/>
-          <span className="text-primary text-glow-cyan text-4xl md:text-6xl">Unlocking the Mind.</span>
+          Master the Body.<br/>
+          <span className="text-primary text-glow-cyan text-4xl md:text-6xl">Elevate the Mind.</span>
         </h2>
       </section>
     </Layout>

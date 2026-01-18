@@ -26,9 +26,10 @@ export function Navigation() {
   return (
     <>
       {/* Mobile Toggle */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5">
-        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
-          <img src={logoImg} alt="Ambi Elite Logo" className="h-10 w-auto invert object-contain" style={{ clipPath: 'inset(0 0 35% 0)' }} />
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5 h-20">
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 h-full">
+          <img src={logoImg} alt="Ambi Elite Logo" className="h-16 w-auto invert object-contain" style={{ clipPath: 'inset(0 0 35% 0)' }} />
+          <span className="font-display font-black text-xl tracking-tighter uppercase text-foreground whitespace-nowrap">Ambi <span className="text-primary">Elite</span></span>
         </Link>
         <button 
           onClick={() => setIsOpen(!isOpen)}
@@ -74,14 +75,17 @@ export function Navigation() {
 
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-72 flex-col border-r border-white/5 bg-background/50 backdrop-blur-xl">
-        <div className="p-10 flex flex-col items-center">
-          <Link href="/" className="group block mb-6">
+        <div className="p-8 flex flex-col items-center">
+          <Link href="/" className="group flex items-center gap-4 mb-6 w-full">
             <img 
               src={logoImg} 
               alt="Ambi Elite Logo" 
-              className="w-48 h-auto invert transition-transform group-hover:scale-105 object-contain" 
+              className="w-20 h-auto invert transition-transform group-hover:scale-105 object-contain" 
               style={{ clipPath: 'inset(0 0 35% 0)' }}
             />
+            <h1 className="font-display font-black text-2xl tracking-tighter uppercase leading-none text-foreground">
+              Ambi<br/><span className="text-primary">Elite</span>
+            </h1>
           </Link>
           <div className="w-full h-px bg-white/5 mb-6" />
         </div>
