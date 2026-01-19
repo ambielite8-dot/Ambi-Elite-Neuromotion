@@ -3,11 +3,17 @@ import { Link, useLocation } from "wouter";
 import { 
   Menu, X, Brain, Scale, Activity, 
   BookOpen, Heart, Mail, Landmark, Zap,
-  Trophy, ShoppingBag
+  Trophy, ShoppingBag, ChevronDown
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import logoImg from "@assets/IMG_2736_1768707397208.jpeg";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home", icon: Brain },
@@ -26,114 +32,68 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
 
+  const activeItem = NAV_ITEMS.find(item => item.href === location) || NAV_ITEMS[0];
+
   return (
     <>
-      {/* Mobile Toggle */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b border-white/5 h-24">
-        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 h-full">
-          <div className="h-full w-auto flex items-center overflow-hidden">
-            <img 
-              src={logoImg} 
-              alt="Ambi Elite Logo" 
-              className="h-[120%] w-auto mix-blend-screen object-contain" 
-              style={{ filter: 'brightness(1.5) contrast(1.1)', transform: 'translateY(0%)' }}
-            />
-          </div>
-          <span className="font-display font-black text-2xl tracking-tighter uppercase text-foreground whitespace-nowrap">Ambi <span className="text-primary">Elite</span></span>
-        </Link>
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-2 rounded-md hover:bg-white/5 transition-colors"
-        >
-          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
-        </button>
-      </div>
-
-      {/* Mobile Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="fixed inset-0 z-40 bg-background lg:hidden pt-32 px-6"
-          >
-            <nav className="flex flex-col space-y-4">
-              {NAV_ITEMS.map((item) => {
-                const isActive = location === item.href;
-                return (
-                  <Link 
-                    key={item.href} 
-                    href={item.href}
-                    className={cn(
-                      "flex items-center space-x-4 p-4 rounded-lg text-lg font-bold uppercase tracking-tighter transition-all",
-                      isActive 
-                        ? "bg-primary text-primary-foreground glow-cyan" 
-                        : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
-                    )}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <item.icon className="w-6 h-6" />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-80 flex-col border-r border-white/5 bg-background/50 backdrop-blur-xl">
-        <div className="p-8">
-          <Link href="/" className="group flex items-center gap-4 mb-8 w-full h-24">
+      {/* Universal Top Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-white/5 h-20 px-6">
+        <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 h-full">
             <div className="h-full w-auto flex items-center overflow-hidden">
               <img 
                 src={logoImg} 
                 alt="Ambi Elite Logo" 
-                className="h-[140%] w-auto mix-blend-screen transition-transform group-hover:scale-105 object-contain" 
-                style={{ filter: 'brightness(1.5) contrast(1.1)', transform: 'translateY(0%)' }}
+                className="h-[120%] w-auto mix-blend-screen object-contain" 
+                style={{ filter: 'brightness(1.5) contrast(1.1)' }}
               />
             </div>
-            <h1 className="font-display font-black text-2xl tracking-tighter uppercase leading-none text-foreground whitespace-nowrap">
-              Ambi<br/><span className="text-primary">Elite</span>
-            </h1>
+            <span className="font-display font-black text-xl md:text-2xl tracking-tighter uppercase text-foreground whitespace-nowrap">
+              Ambi <span className="text-primary">Elite</span>
+            </span>
           </Link>
-          <div className="w-full h-px bg-white/5 mb-8" />
-        </div>
 
-        <nav className="flex-1 px-6 space-y-2 overflow-y-auto custom-scrollbar">
-          {NAV_ITEMS.map((item) => {
-            const isActive = location === item.href;
-            return (
-              <Link 
-                key={item.href} 
-                href={item.href}
-                className={cn(
-                  "flex items-center space-x-4 px-4 py-3 rounded-md text-xs font-bold uppercase tracking-widest transition-all duration-200 group",
-                  isActive 
-                    ? "bg-primary/10 text-primary border-l-2 border-primary rounded-l-none" 
-                    : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
-                )}
-              >
-                <item.icon className={cn(
-                  "w-5 h-5 transition-transform group-hover:scale-110",
-                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"
-                )} />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
+          {/* Navigation Dropdown */}
+          <div className="flex items-center gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
+                  <activeItem.icon className="w-5 h-5 text-primary" />
+                  <span className="font-bold uppercase tracking-widest text-[10px] hidden sm:block">{activeItem.label}</span>
+                  <ChevronDown className="w-4 h-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 bg-background/95 backdrop-blur-xl border-white/10 p-2 mt-2">
+                {NAV_ITEMS.map((item) => {
+                  const isActive = location === item.href;
+                  return (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link 
+                        href={item.href}
+                        className={cn(
+                          "flex items-center gap-3 p-3 rounded-md cursor-pointer transition-colors",
+                          isActive 
+                            ? "bg-primary/10 text-primary" 
+                            : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                        )}
+                      >
+                        <item.icon className="w-4 h-4" />
+                        <span className="font-bold uppercase tracking-widest text-[10px]">{item.label}</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-        <div className="p-10 text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
-          <div className="flex gap-4 mb-4">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span>Neuromotion Verified</span>
+            <Link href="/donate" className="hidden md:flex">
+              <Button size="sm" className="font-black uppercase tracking-tighter glow-cyan h-9 px-6 text-xs">
+                Donate
+              </Button>
+            </Link>
           </div>
-          <p>&copy; {new Date().getFullYear()} Ambi Elite</p>
         </div>
-      </aside>
+      </header>
     </>
   );
 }

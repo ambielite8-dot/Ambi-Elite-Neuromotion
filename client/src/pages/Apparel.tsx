@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Eye, Zap, Shield, Target } from "lucide-react";
 import apparelHero from "@assets/IMG_2592_1768795873483.jpeg";
 import precisionShoe from "@assets/IMG_2591_1768795873483.jpeg";
-import powerShoe from "@assets/IMG_2590_1768795873483.jpeg";
+import powerShoe from "@assets/7837293C-270E-4C99-87C7-81BA21436DE8_1768795873483.png";
 import whiteApparel from "@assets/IMG_2587_1768795873483.jpeg";
 
 export default function Apparel() {
@@ -91,8 +91,8 @@ export default function Apparel() {
               {/* Precision 1 */}
               <Card className="bg-black border-white/10 overflow-hidden group">
                 <CardContent className="p-0">
-                  <div className="aspect-video relative overflow-hidden">
-                    <img src={precisionShoe} alt="Ambi Precision 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="aspect-video relative overflow-hidden bg-white/5">
+                    <img src={precisionShoe} alt="Ambi Precision 1" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute top-6 left-6">
                       <Badge className="bg-primary/90 text-primary-foreground font-black uppercase tracking-widest px-4 py-1">Precision 1</Badge>
                     </div>
@@ -114,8 +114,8 @@ export default function Apparel() {
               {/* Power 1 */}
               <Card className="bg-black border-white/10 overflow-hidden group">
                 <CardContent className="p-0">
-                  <div className="aspect-video relative overflow-hidden">
-                    <img src={powerShoe} alt="Ambi Power 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="aspect-video relative overflow-hidden bg-white/5">
+                    <img src={powerShoe} alt="Ambi Power 1" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute top-6 left-6">
                       <Badge className="bg-orange-500/90 text-white font-black uppercase tracking-widest px-4 py-1">Power 1</Badge>
                     </div>
