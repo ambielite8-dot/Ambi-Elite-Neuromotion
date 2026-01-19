@@ -3,14 +3,15 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Landmark, Trophy, Users, Zap, DollarSign } from "lucide-react";
+import { Link } from "wouter";
 import gymImg from "@assets/IMG_0025_1768795739004.jpeg";
 
 export default function Athletics() {
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pb-12">
         {/* Hero Section */}
-        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-4">
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-4">
           <div 
             className="absolute inset-0 z-0"
             style={{
@@ -22,23 +23,25 @@ export default function Athletics() {
             <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
           </div>
 
-          <div className="container relative z-10 px-6 text-center">
+          <div className="container relative z-10 px-6 text-center py-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="font-display font-black text-6xl md:text-8xl tracking-tighter uppercase mb-6">
+              <h1 className="font-display font-black text-6xl md:text-8xl tracking-tighter uppercase mb-6 leading-none">
                 Ambi <span className="text-primary">Athletics</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium uppercase tracking-widest mb-10">
                 Revolutionizing Sports Through Neuromotion
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="h-14 px-10 text-lg uppercase font-black tracking-tighter glow-cyan">
-                  Support the Facility
-                </Button>
-                <Button size="lg" variant="outline" className="h-14 px-10 text-lg uppercase font-black tracking-tighter border-primary/50 hover:bg-primary/10">
+                <Link href="/donate">
+                  <Button size="lg" className="h-14 px-10 text-lg uppercase font-black tracking-tighter glow-cyan w-full sm:w-auto">
+                    Support the Facility
+                  </Button>
+                </Link>
+                <Button size="lg" variant="outline" className="h-14 px-10 text-lg uppercase font-black tracking-tighter border-primary/50 hover:bg-primary/10 w-full sm:w-auto">
                   Join the AAU Team
                 </Button>
               </div>
@@ -134,9 +137,11 @@ export default function Athletics() {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
                 Join us in building the global authority on athletic performance. Every donation goes directly towards the facility, scholarships, and revolutionary training for the next generation.
               </p>
-              <Button size="lg" className="h-14 px-12 text-xl font-black uppercase tracking-tighter glow-cyan">
-                Donate Now
-              </Button>
+              <Link href="/donate">
+                <Button size="lg" className="h-14 px-12 text-xl font-black uppercase tracking-tighter glow-cyan">
+                  Donate Now
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

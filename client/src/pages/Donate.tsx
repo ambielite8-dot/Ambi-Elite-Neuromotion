@@ -1,89 +1,93 @@
 import { Layout } from "@/components/Layout";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Heart, CreditCard, DollarSign, ShieldCheck, Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { Heart, CreditCard, Landmark, ShieldCheck } from "lucide-react";
+import { FaPaypal, FaStripe } from "react-icons/fa";
 
 export default function Donate() {
   return (
     <Layout>
-      <SectionHeader 
-        title="Support Global Research" 
-        subtitle="Ambi Elite research and education initiatives are currently independent and globally accessible."
-      />
+      <div className="min-h-screen bg-background">
+        <SectionHeader 
+          title="Support the Mission" 
+          subtitle="Your contributions fuel the Neuromotion discovery and provide scholarships for the next generation of athletes."
+        />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-12">
-        <div className="space-y-12">
-          <p className="text-2xl text-foreground font-bold leading-tight max-w-xl">
-            Your contribution accelerates the <span className="text-primary italic">Neuromotion Revolution</span>.
-          </p>
-          
-          <div className="grid grid-cols-1 gap-6">
-            {[
-              { title: "Scientific Publication", desc: "Funding the peer-reviewed release of bilateral movement discoveries." },
-              { title: "Advanced Equipment", desc: "Investing in high-speed motion capture and EEG imaging tools." },
-              { title: "Global Literacy", desc: "Creating free educational content for schools and elite sports academies." }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4"
-              >
-                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mt-1 flex-shrink-0">
-                  <div className="w-2 h-2 rounded-full bg-primary glow-cyan" />
+        <div className="max-w-6xl mx-auto px-6 pb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <Card className="glass-panel border-primary/20 p-8">
+              <CardContent className="p-0">
+                <div className="w-12 h-12 bg-primary/10 rounded-sm flex items-center justify-center mb-6">
+                  <Landmark className="text-primary w-6 h-6" />
                 </div>
-                <div>
-                  <h4 className="font-black uppercase tracking-tighter text-sm mb-1">{item.title}</h4>
-                  <p className="text-muted-foreground text-sm font-medium">{item.desc}</p>
+                <h3 className="text-2xl font-black uppercase mb-4">Gym Facility Fund</h3>
+                <p className="text-muted-foreground font-medium mb-6 leading-relaxed">
+                  Directly support the construction of our specialized basketball training facility and AAU team development.
+                </p>
+                <div className="w-full bg-white/5 rounded-full h-2 mb-2">
+                  <div className="bg-primary h-full rounded-full w-[45%] glow-cyan" />
                 </div>
-              </motion.div>
-            ))}
+                <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                  <span>Phase 1</span>
+                  <span>45% Funded</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-panel border-accent/20 p-8">
+              <CardContent className="p-0">
+                <div className="w-12 h-12 bg-accent/10 rounded-sm flex items-center justify-center mb-6">
+                  <Heart className="text-accent w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black uppercase mb-4">NST Scholarships</h3>
+                <p className="text-muted-foreground font-medium mb-6 leading-relaxed">
+                  Provide access to Neuromotor Symmetry Training for underprivileged youth and aspiring professional athletes.
+                </p>
+                <Button variant="outline" className="w-full border-accent/20 text-accent font-black uppercase tracking-widest text-[10px]">Learn About Scholarships</Button>
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="p-10 glass-panel rounded-sm border-primary/20 bg-primary/5">
-            <ShieldCheck className="w-10 h-10 text-primary mb-6" />
-            <p className="text-[10px] text-primary font-black uppercase tracking-[0.4em] mb-4">Integrity Protocol</p>
-            <p className="text-2xl font-display font-black uppercase tracking-tighter italic">Transparency and accountability are core values.</p>
+          <div className="space-y-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-black uppercase text-center mb-12 italic">Choose a <span className="text-primary">Payment Method</span></h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-4 p-8 rounded-sm bg-white text-black hover:bg-white/90 transition-all group"
+              >
+                <FaStripe className="w-12 h-12" />
+                <div className="text-left">
+                  <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Pay with</p>
+                  <p className="text-xl font-black uppercase tracking-tighter">Stripe</p>
+                </div>
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-4 p-8 rounded-sm bg-[#0070ba] text-white hover:bg-[#0070ba]/90 transition-all group"
+              >
+                <FaPaypal className="w-12 h-12" />
+                <div className="text-left">
+                  <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Pay with</p>
+                  <p className="text-xl font-black uppercase tracking-tighter">PayPal</p>
+                </div>
+              </motion.button>
+            </div>
+
+            <div className="p-8 border border-white/5 rounded-sm bg-white/[0.02] text-center">
+              <ShieldCheck className="w-8 h-8 mx-auto mb-4 opacity-20" />
+              <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest leading-relaxed">
+                All transactions are secure and encrypted.<br/>
+                Ambi Elite Foundation is a registered non-profit organization.
+              </p>
+            </div>
           </div>
         </div>
-
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="glass-panel p-12 rounded-sm border-white/10 shadow-3xl relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 p-4 opacity-5">
-             <Globe size={150} />
-          </div>
-          
-          <h3 className="text-3xl font-display font-black mb-8 uppercase tracking-tighter italic">Contribute</h3>
-          
-          <div className="space-y-6">
-            <button 
-              disabled
-              className="w-full py-6 px-8 rounded-sm bg-primary text-primary-foreground font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:scale-[1.02] transition-all duration-300 cursor-not-allowed opacity-50 glow-cyan"
-            >
-              <CreditCard className="w-6 h-6" />
-              Stripe Secure
-            </button>
-            
-            <button 
-              disabled
-              className="w-full py-6 px-8 rounded-sm border-2 border-white/10 text-foreground font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-white/5 transition-all duration-300 cursor-not-allowed opacity-50"
-            >
-              <DollarSign className="w-6 h-6" />
-              PayPal Official
-            </button>
-          </div>
-          
-          <div className="mt-10 flex items-center justify-center gap-8 opacity-40">
-             <div className="h-px bg-white/20 flex-1" />
-             <span className="text-[10px] font-black uppercase tracking-widest whitespace-nowrap">Secure Gateway</span>
-             <div className="h-px bg-white/20 flex-1" />
-          </div>
-        </motion.div>
       </div>
     </Layout>
   );
