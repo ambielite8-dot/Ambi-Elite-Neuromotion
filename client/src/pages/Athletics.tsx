@@ -10,7 +10,7 @@ export default function Athletics() {
     <Layout>
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-4">
           <div 
             className="absolute inset-0 z-0"
             style={{

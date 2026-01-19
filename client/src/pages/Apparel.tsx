@@ -12,10 +12,10 @@ import whiteApparel from "@assets/IMG_2587_1768795873483.jpeg";
 export default function Apparel() {
   return (
     <Layout>
-      <div className="min-h-screen bg-background pb-20">
+      <div className="min-h-screen bg-background pb-10">
         {/* Hero Section */}
-        <section className="relative min-h-[80vh] flex items-center overflow-hidden border-b border-white/5 pt-20">
-          <div className="container px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 py-12">
+        <section className="relative min-h-[70vh] flex items-center overflow-hidden border-b border-white/5 pt-4">
+          <div className="container px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 py-6">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -42,7 +42,7 @@ export default function Apparel() {
               <img 
                 src={apparelHero} 
                 alt="Ambi Elite Collection" 
-                className="w-full h-full object-contain mix-blend-lighten max-h-[60vh]" 
+                className="w-full h-full object-contain mix-blend-lighten max-h-[50vh]" 
               />
             </motion.div>
           </div>
@@ -150,7 +150,7 @@ export default function Apparel() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 border-t border-white/5 mb-12">
+        <section className="py-24 border-t border-white/5 mb-6">
           <div className="container px-6">
             <div className="p-12 md:p-20 rounded-3xl bg-primary text-primary-foreground text-center relative overflow-hidden group">
               <div className="relative z-10">

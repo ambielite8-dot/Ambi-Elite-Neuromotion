@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden">
+      <section className="relative min-h-[70vh] flex flex-col justify-center overflow-hidden pt-4">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-10 w-full h-full">
-           <Brain size={800} className="text-primary animate-pulse mx-auto" />
+           <Brain size={600} className="text-primary animate-pulse mx-auto" />
         </div>
 
         <motion.div
@@ -62,7 +62,7 @@ export default function Home() {
       </section>
 
       {/* Brain Integration Section */}
-      <section className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -101,7 +101,7 @@ export default function Home() {
       </section>
 
       {/* Benefits for Kids & Adults */}
-      <section className="mt-40 space-y-32">
+      <section className="mt-20 space-y-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
@@ -176,7 +176,7 @@ export default function Home() {
       </section>
 
       {/* Slogan */}
-      <section className="mt-40 text-center py-20 border-y border-white/5">
+      <section className="mt-20 text-center py-10 border-y border-white/5">
         <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic mb-4">
           Master the Body.<br/>
           <span className="text-primary text-glow-cyan text-4xl md:text-6xl">Elevate the Mind.</span>
