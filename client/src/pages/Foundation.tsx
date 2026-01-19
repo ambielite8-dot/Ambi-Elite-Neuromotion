@@ -1,7 +1,9 @@
 import { Layout } from "@/components/Layout";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Landmark, ShieldCheck, Globe, Scale } from "lucide-react";
+import { Landmark, ShieldCheck, Globe, Scale, Heart } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 
 export default function Foundation() {
   return (
@@ -21,13 +23,20 @@ export default function Foundation() {
           align="center"
         />
 
-        <div className="prose prose-invert prose-lg text-foreground/80 mb-20 max-w-4xl">
+        <div className="prose prose-invert prose-lg text-foreground/80 mb-12 max-w-4xl">
           <p className="font-medium text-xl leading-relaxed">
             This is a research-first initiative. We are dedicated to exploring the untapped potential
             of the human motor system through rigorous scientific inquiry and open collaboration. 
             <span className="text-primary font-black uppercase tracking-widest block mt-4">The Global Standard for Bilateral Literacy.</span>
           </p>
         </div>
+
+        <Link href="/donate">
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-black uppercase tracking-[0.2em] mb-20 group h-14 px-10 rounded-sm">
+            <Heart className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform" />
+            Support the Research
+          </Button>
+        </Link>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           {[
