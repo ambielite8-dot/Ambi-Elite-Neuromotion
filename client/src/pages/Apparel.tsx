@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Eye, Zap, Shield, Target } from "lucide-react";
 import apparelHero from "@assets/IMG_2592_1768795873483.jpeg";
 import precisionShoe from "@assets/IMG_2591_1768795873483.jpeg";
-import powerShoe from "@assets/7837293C-270E-4C99-87C7-81BA21436DE8_1768795873483.png";
+import powerShoe from "@assets/7837293C-270E-4C99-87C7-81BA21436DE8_1768797001756.png";
 import whiteApparel from "@assets/IMG_2587_1768795873483.jpeg";
 
 export default function Apparel() {
