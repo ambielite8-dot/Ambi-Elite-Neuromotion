@@ -12,12 +12,16 @@ import Research from "@/pages/Research";
 import Foundation from "@/pages/Foundation";
 import Donate from "@/pages/Donate";
 import Contact from "@/pages/Contact";
+import Athletics from "@/pages/Athletics";
+import Apparel from "@/pages/Apparel";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/athletics" component={Athletics} />
+      <Route path="/apparel" component={Apparel} />
       <Route path="/neuromotion" component={Neuromotion} />
       <Route path="/six-laws" component={SixLaws} />
       <Route path="/nst" component={Nst} />

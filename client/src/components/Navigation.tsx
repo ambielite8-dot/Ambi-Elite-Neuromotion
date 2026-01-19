@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { 
   Menu, X, Brain, Scale, Activity, 
-  BookOpen, Heart, Mail, Landmark, Zap
+  BookOpen, Heart, Mail, Landmark, Zap,
+  Trophy, ShoppingBag
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,8 @@ import logoImg from "@assets/IMG_2736_1768707397208.jpeg";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home", icon: Brain },
+  { href: "/athletics", label: "Athletics", icon: Trophy },
+  { href: "/apparel", label: "Apparel", icon: ShoppingBag },
   { href: "/neuromotion", label: "Neuromotion", icon: Activity },
   { href: "/six-laws", label: "The Six Laws", icon: Scale },
   { href: "/nst", label: "NST", icon: Zap },
@@ -99,7 +102,7 @@ export function Navigation() {
           <div className="w-full h-px bg-white/5 mb-8" />
         </div>
 
-        <nav className="flex-1 px-6 space-y-2">
+        <nav className="flex-1 px-6 space-y-2 overflow-y-auto custom-scrollbar">
           {NAV_ITEMS.map((item) => {
             const isActive = location === item.href;
             return (
