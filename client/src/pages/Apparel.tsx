@@ -12,23 +12,23 @@ import whiteApparel from "@assets/IMG_2587_1768795873483.jpeg";
 export default function Apparel() {
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pb-20">
         {/* Hero Section */}
-        <section className="relative h-[70vh] flex items-center overflow-hidden border-b border-white/5">
-          <div className="container px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        <section className="relative min-h-[80vh] flex items-center overflow-hidden border-b border-white/5 pt-20">
+          <div className="container px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 py-12">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
               <Badge className="bg-primary text-primary-foreground mb-4 font-black uppercase tracking-[0.2em]">Science x Style</Badge>
-              <h1 className="font-display font-black text-6xl md:text-8xl tracking-tighter uppercase mb-6">
+              <h1 className="font-display font-black text-6xl md:text-8xl tracking-tighter uppercase mb-6 leading-[0.9]">
                 Ambi <span className="text-primary">Apparel</span>
               </h1>
               <p className="text-xl text-muted-foreground uppercase tracking-widest font-medium mb-8">
                 The Science of Doing it Right
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 <Button size="lg" className="font-black uppercase tracking-tighter glow-cyan">Shop Collection</Button>
                 <Button size="lg" variant="outline" className="font-black uppercase tracking-tighter border-white/10">Learn the Tech</Button>
               </div>
@@ -37,9 +37,13 @@ export default function Apparel() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative aspect-square"
+              className="relative aspect-square flex items-center justify-center"
             >
-              <img src={apparelHero} alt="Ambi Elite Collection" className="w-full h-full object-contain mix-blend-lighten" />
+              <img 
+                src={apparelHero} 
+                alt="Ambi Elite Collection" 
+                className="w-full h-full object-contain mix-blend-lighten max-h-[60vh]" 
+              />
             </motion.div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
@@ -91,8 +95,12 @@ export default function Apparel() {
               {/* Precision 1 */}
               <Card className="bg-black border-white/10 overflow-hidden group">
                 <CardContent className="p-0">
-                  <div className="aspect-video relative overflow-hidden bg-white/5">
-                    <img src={precisionShoe} alt="Ambi Precision 1" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110" />
+                  <div className="aspect-video relative overflow-hidden bg-white/5 flex items-center justify-center p-8">
+                    <img 
+                      src={precisionShoe} 
+                      alt="Ambi Precision 1" 
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110" 
+                    />
                     <div className="absolute top-6 left-6">
                       <Badge className="bg-primary/90 text-primary-foreground font-black uppercase tracking-widest px-4 py-1">Precision 1</Badge>
                     </div>
@@ -114,8 +122,12 @@ export default function Apparel() {
               {/* Power 1 */}
               <Card className="bg-black border-white/10 overflow-hidden group">
                 <CardContent className="p-0">
-                  <div className="aspect-video relative overflow-hidden bg-white/5">
-                    <img src={powerShoe} alt="Ambi Power 1" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110" />
+                  <div className="aspect-video relative overflow-hidden bg-white/5 flex items-center justify-center p-8">
+                    <img 
+                      src={powerShoe} 
+                      alt="Ambi Power 1" 
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110" 
+                    />
                     <div className="absolute top-6 left-6">
                       <Badge className="bg-orange-500/90 text-white font-black uppercase tracking-widest px-4 py-1">Power 1</Badge>
                     </div>
@@ -138,11 +150,11 @@ export default function Apparel() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 border-t border-white/5">
+        <section className="py-24 border-t border-white/5 mb-12">
           <div className="container px-6">
             <div className="p-12 md:p-20 rounded-3xl bg-primary text-primary-foreground text-center relative overflow-hidden group">
               <div className="relative z-10">
-                <h2 className="font-display font-black text-4xl md:text-6xl tracking-tighter uppercase mb-6">Do it Right.</h2>
+                <h2 className="font-display font-black text-4xl md:text-6xl tracking-tighter uppercase mb-6 leading-none">Do it Right.</h2>
                 <p className="text-xl opacity-90 font-medium uppercase tracking-widest mb-10">Join the Elite</p>
                 <Button size="lg" variant="secondary" className="h-16 px-12 text-xl font-black uppercase tracking-tighter shadow-2xl">
                   Explore Full Catalog
