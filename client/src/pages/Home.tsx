@@ -25,11 +25,11 @@ export default function Home() {
             A Global Neurological Discovery
           </span>
           <h1 className="font-display text-7xl md:text-9xl font-black tracking-tighter text-foreground mb-4 leading-[0.85] uppercase italic">
-            Coherent<br/>
-            <span className="text-primary text-glow-cyan text-6xl md:text-8xl">Integration</span>
+            Complete Human<br/>
+            <span className="text-primary text-glow-cyan text-6xl md:text-8xl">Movement</span>
           </h1>
           <p className="font-display text-2xl md:text-4xl text-foreground font-bold max-w-4xl mx-auto leading-tight mb-12 uppercase tracking-tighter">
-            Harness the body to elevate the mind. <span className="text-accent italic">The Corpus Callosum Evolution.</span>
+            Unlock your body's second engine. <span className="text-accent italic">Bilateral Mastery through Neuromotion.</span>
           </p>
         </motion.div>
 
