@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Activity, Zap, Target, Brain, Globe, ShieldCheck, Heart, ArrowRight } from "lucide-react";
-import brainComparisonImg from "@assets/IMG_0022_1768704291952.jpeg";
+import silhouetteImg from "@assets/stock_images/human_body_silhouett_d804f4e0.jpg";
 
 export default function Neuromotion() {
   const points = [
@@ -64,11 +64,15 @@ export default function Neuromotion() {
             <p className="font-bold text-lg italic">"It makes subconscious movement conscious. People stop being prisoners to habit-driven motion."</p>
           </div>
         </div>
-        <div className="relative group min-h-[400px] flex items-center justify-center">
+        <div className="relative group min-h-[400px] flex items-center justify-center overflow-hidden rounded-sm">
           <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
-          <div className="w-full h-full border border-white/5 rounded-sm bg-white/[0.02] flex items-center justify-center italic text-muted-foreground font-black uppercase tracking-widest text-xs p-12 text-center">
-            Scientific anatomical mapping of neural pathways in progress
-          </div>
+          <img 
+            src={silhouetteImg} 
+            alt="Scientific Human Silhouette" 
+            className="w-full h-full object-cover opacity-50 mix-blend-lighten border border-white/5 shadow-2xl transition-all group-hover:opacity-70 group-hover:scale-105 duration-700"
+            style={{ filter: 'brightness(1.2) contrast(1.1)' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
         </div>
       </section>
 
