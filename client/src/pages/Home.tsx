@@ -12,23 +12,23 @@ export default function Home() {
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden pt-4">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 opacity-40 w-full h-full max-w-4xl pointer-events-none">
+        <div className="absolute inset-0 -z-20 opacity-60 flex items-center justify-center pointer-events-none">
            <img 
              src={heroSilhouette} 
              alt="Scientific Silhouette" 
-             className="w-full h-full object-contain"
-             style={{ filter: 'brightness(1.5) contrast(1.2)' }}
+             className="w-full h-full max-w-[1200px] object-contain mix-blend-lighten"
+             style={{ filter: 'brightness(2.5) contrast(1.8)' }}
            />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-5 w-full h-full pointer-events-none">
-           <Brain size={600} className="text-primary animate-pulse mx-auto" />
+        <div className="absolute inset-0 -z-10 opacity-5 flex items-center justify-center pointer-events-none">
+           <Brain size={600} className="text-primary animate-pulse" />
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center"
+          className="text-center relative z-10"
         >
           <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-black tracking-[0.3em] text-primary uppercase bg-primary/10 border border-primary/20 rounded-full glow-cyan">
             A Global Neurological Discovery
