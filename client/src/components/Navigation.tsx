@@ -38,7 +38,7 @@ export function Navigation() {
   return (
     <>
       {/* Universal Top Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-white/5 h-20 px-6">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#02040a]/95 backdrop-blur-xl border-b border-white/5 h-20 px-6">
         <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 h-full">
             <div className="h-full w-auto flex items-center overflow-hidden">
