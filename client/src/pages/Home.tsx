@@ -12,12 +12,12 @@ export default function Home() {
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden pt-4">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 opacity-20 w-full h-full max-w-4xl pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 opacity-40 w-full h-full max-w-4xl pointer-events-none">
            <img 
              src={heroSilhouette} 
              alt="Scientific Silhouette" 
-             className="w-full h-full object-contain mix-blend-screen"
-             style={{ filter: 'brightness(1.2) contrast(1.1)' }}
+             className="w-full h-full object-contain"
+             style={{ filter: 'brightness(1.5) contrast(1.2)' }}
            />
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-5 w-full h-full pointer-events-none">
