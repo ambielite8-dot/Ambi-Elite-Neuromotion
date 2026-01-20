@@ -45,36 +45,48 @@ export default function Neuromotion() {
 
   return (
     <Layout>
-      <SectionHeader 
-        title="The Neuromotion Engine" 
-        subtitle="The revolutionary study of how energy, motion, and control flow through the human body via bilateral coordination."
-      />
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background z-10" />
+        <img 
+          src={silhouetteImg} 
+          alt="" 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] opacity-[0.03] mix-blend-lighten grayscale"
+          style={{ filter: 'brightness(1.5) contrast(1.2)' }}
+        />
+      </div>
 
-      {/* Big Picture Section */}
-      <section className="mb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <div className="space-y-8">
-          <h2 className="text-5xl font-black uppercase italic tracking-tighter leading-none">
-            Why you are <br/><span className="text-primary text-glow-cyan">Imbalanced</span>
-          </h2>
-          <p className="text-xl text-muted-foreground font-medium leading-relaxed">
-            Neuromotion reveals that humans are built with a Dual Energy Cycle. While most people only develop one directional movement pattern, we show how to activate both intentionally, reframing ambidexterity from a "skill" to a natural human capacity.
-          </p>
-          <div className="p-8 glass-panel border-primary/20 bg-primary/5 rounded-sm">
-            <h4 className="text-primary font-black uppercase tracking-widest text-xs mb-4">The Discovery</h4>
-            <p className="font-bold text-lg italic">"It makes subconscious movement conscious. People stop being prisoners to habit-driven motion."</p>
+      <div className="relative z-10">
+        <SectionHeader 
+          title="The Neuromotion Engine" 
+          subtitle="The revolutionary study of how energy, motion, and control flow through the human body via bilateral coordination."
+        />
+
+        {/* Big Picture Section */}
+        <section className="mb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="space-y-8">
+            <h2 className="text-5xl font-black uppercase italic tracking-tighter leading-none">
+              Why you are <br/><span className="text-primary text-glow-cyan">Imbalanced</span>
+            </h2>
+            <p className="text-xl text-muted-foreground font-medium leading-relaxed">
+              Neuromotion reveals that humans are built with a Dual Energy Cycle. While most people only develop one directional movement pattern, we show how to activate both intentionally, reframing ambidexterity from a "skill" to a natural human capacity.
+            </p>
+            <div className="p-8 glass-panel border-primary/20 bg-primary/5 rounded-sm">
+              <h4 className="text-primary font-black uppercase tracking-widest text-xs mb-4">The Discovery</h4>
+              <p className="font-bold text-lg italic">"It makes subconscious movement conscious. People stop being prisoners to habit-driven motion."</p>
+            </div>
           </div>
-        </div>
-        <div className="relative group min-h-[400px] flex items-center justify-center overflow-hidden rounded-sm">
-          <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
-          <img 
-            src={silhouetteImg} 
-            alt="Scientific Human Silhouette" 
-            className="w-full h-full object-cover opacity-50 mix-blend-lighten border border-white/5 shadow-2xl transition-all group-hover:opacity-70 group-hover:scale-105 duration-700"
-            style={{ filter: 'brightness(1.2) contrast(1.1)' }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-        </div>
-      </section>
+          <div className="relative group min-h-[400px] flex items-center justify-center overflow-hidden rounded-sm border border-white/5 bg-white/[0.02]">
+            <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
+            <img 
+              src={silhouetteImg} 
+              alt="Scientific Human Silhouette" 
+              className="w-full h-full object-cover opacity-40 mix-blend-lighten shadow-2xl transition-all group-hover:opacity-60 group-hover:scale-105 duration-700"
+              style={{ filter: 'brightness(1.2) contrast(1.1)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+          </div>
+        </section>
+      </div>
 
       {/* Detailed Points */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
@@ -125,6 +137,7 @@ export default function Neuromotion() {
         <p className="text-xl text-foreground font-medium leading-relaxed italic max-w-3xl mx-auto">
           "Once learned, Neuromotion integrates into daily life—walking, standing, reaching. It creates a relationship with the body instead of resistance to it. You don't add something new. You activate what was always there."
         </p>
+      </div>
       </div>
     </Layout>
   );
