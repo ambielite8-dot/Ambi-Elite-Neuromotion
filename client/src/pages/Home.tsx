@@ -24,9 +24,9 @@ export default function Home() {
           <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-black tracking-[0.3em] text-primary uppercase bg-primary/10 border border-primary/20 rounded-full glow-cyan">
             A Global Neurological Discovery
           </span>
-          <h1 className="font-display text-7xl md:text-9xl font-black tracking-tighter text-foreground mb-4 leading-[0.85] uppercase italic">
-            Complete Human<br/>
-            <span className="text-primary text-glow-cyan text-6xl md:text-8xl">Movement</span>
+          <h1 className="font-display text-6xl md:text-8xl font-black tracking-tighter text-foreground mb-4 leading-[0.9] uppercase italic">
+            Human Movement<br/>
+            <span className="text-primary text-glow-cyan text-5xl md:text-7xl">Unlocked</span>
           </h1>
           <p className="font-display text-2xl md:text-4xl text-foreground font-bold max-w-4xl mx-auto leading-tight mb-12 uppercase tracking-tighter">
             Unlock your body's second engine. <span className="text-accent italic">Bilateral Mastery through Neuromotion.</span>
