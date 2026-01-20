@@ -138,7 +138,6 @@ export default function Neuromotion() {
           "Once learned, Neuromotion integrates into daily life—walking, standing, reaching. It creates a relationship with the body instead of resistance to it. You don't add something new. You activate what was always there."
         </p>
       </div>
-      </div>
     </Layout>
   );
 }
