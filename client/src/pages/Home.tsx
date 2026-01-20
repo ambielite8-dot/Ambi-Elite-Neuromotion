@@ -20,9 +20,6 @@ export default function Home() {
              style={{ filter: 'brightness(2.5) contrast(1.8)' }}
            />
         </div>
-        <div className="absolute inset-0 -z-10 opacity-5 flex items-center justify-center pointer-events-none">
-           <Brain size={600} className="text-primary animate-pulse" />
-        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
