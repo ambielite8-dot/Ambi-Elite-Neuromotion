@@ -97,12 +97,6 @@ export default function Home() {
           className="relative group"
         >
           <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 group-hover:bg-primary/30 transition-all" />
-          <img 
-            src={brainIntegrationImg} 
-            alt="Brain Integration Diagram" 
-            className="rounded-sm border border-white/10 glow-cyan shadow-2xl mix-blend-lighten" 
-            style={{ filter: 'contrast(1.1) brightness(1.1)' }}
-          />
         </motion.div>
       </section>
 
