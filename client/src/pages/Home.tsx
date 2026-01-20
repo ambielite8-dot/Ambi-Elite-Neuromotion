@@ -40,22 +40,22 @@ export default function Home() {
           className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed space-y-8"
         >
           <p className="font-medium text-xl text-foreground/80">
-            Neuromotion represents a paradigm shift: true cognitive mastery is achieved through absolute physical discipline. 
+            Neuromotion is completion—activating what was always there. Your body is your greatest possession. 
             We bridge the hemispheres to unlock the next stage of human evolution.
           </p>
           
           <div className="pt-8 flex flex-col sm:flex-row justify-center gap-6">
             <Link 
-              href="/neuromotion" 
+              href="/nst" 
               className="inline-flex items-center justify-center px-10 py-5 rounded-sm bg-primary text-primary-foreground font-black uppercase tracking-widest glow-cyan hover:scale-105 transition-all duration-300"
             >
-              Master the Science <ArrowRight className="ml-2 w-5 h-5" />
+              Start Training <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
             <Link 
-              href="/contact"
+              href="/neuromotion"
               className="inline-flex items-center justify-center px-10 py-5 rounded-sm border-2 border-white/10 text-foreground font-black uppercase tracking-widest hover:bg-white/5 transition-all duration-300"
             >
-              Join the Elite
+              Master the Science
             </Link>
           </div>
         </motion.div>
@@ -68,19 +68,19 @@ export default function Home() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-black mb-8 uppercase leading-none italic">The Corpus<br/><span className="text-primary text-glow-cyan">Callosum Bridge</span></h2>
+          <h2 className="text-5xl font-black mb-8 uppercase leading-none italic">Structural<br/><span className="text-primary text-glow-cyan">Cognition</span></h2>
           <p className="text-muted-foreground text-xl leading-relaxed mb-8 font-medium">
-            The corpus callosum is the neural highway that integrates the two hemispheres. Ambi Elite training strengthens this bridge, 
-            enabling faster decisions, smoother balance, and total synchronization.
+            Cognitive benefits are structural, not theoretical. Neuromotion increases interhemispheric signaling, 
+            improving executive function, focus, and spatial awareness through systematic motion.
           </p>
           <div className="grid grid-cols-2 gap-6">
             <div className="p-6 glass-panel border-white/5">
-              <h4 className="font-black text-primary uppercase text-xs mb-2 tracking-widest">Focused</h4>
-              <p className="text-[10px] uppercase font-bold text-muted-foreground">Sequencing & Detail</p>
+              <h4 className="font-black text-primary uppercase text-xs mb-2 tracking-widest">Inner Grip</h4>
+              <p className="text-[10px] uppercase font-bold text-muted-foreground">Precision & Sequencing</p>
             </div>
             <div className="p-6 glass-panel border-white/5">
-              <h4 className="font-black text-accent uppercase text-xs mb-2 tracking-widest">Creativity</h4>
-              <p className="text-[10px] uppercase font-bold text-muted-foreground">Flow & Intuition</p>
+              <h4 className="font-black text-accent uppercase text-xs mb-2 tracking-widest">Outer Grip</h4>
+              <p className="text-[10px] uppercase font-bold text-muted-foreground">Power & Flow</p>
             </div>
           </div>
         </motion.div>
@@ -118,20 +118,20 @@ export default function Home() {
             />
           </motion.div>
           <div>
-            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Learning</span> plus Development</h3>
+            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Youth</span> Development</h3>
             <div className="space-y-8">
               <div className="flex gap-6">
                 <GraduationCap className="w-10 h-10 text-primary flex-shrink-0" />
                 <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Accelerated Learning</h4>
-                  <p className="text-muted-foreground font-medium">Activates both hemispheres, making children more adaptable, creative, and focused.</p>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Curriculum Mastery</h4>
+                  <p className="text-muted-foreground font-medium">A 208-week journey (ages 6-18) that prevents asymmetry and builds absolute coordination through customized training.</p>
                 </div>
               </div>
               <div className="flex gap-6">
                 <ShieldCheck className="w-10 h-10 text-primary flex-shrink-0" />
                 <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Confidence plus Discipline</h4>
-                  <p className="text-muted-foreground font-medium">Mastering unique skills instills self-assurance and the reward of steady progress.</p>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Embodied Confidence</h4>
+                  <p className="text-muted-foreground font-medium">Confidence through control. Students master their bodies to unlock their true cognitive potential.</p>
                 </div>
               </div>
             </div>
@@ -140,20 +140,20 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
-            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-accent">Performance</span> plus Longevity</h3>
+            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-accent">Adult</span> Health</h3>
             <div className="space-y-8">
-              <div className="flex gap-6">
-                <Rocket className="w-10 h-10 text-accent flex-shrink-0" />
-                <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Sharpness plus Performance</h4>
-                  <p className="text-muted-foreground font-medium">Strengthen the mind-body connection to drive results in sports and professional life.</p>
-                </div>
-              </div>
               <div className="flex gap-6">
                 <Heart className="w-10 h-10 text-accent flex-shrink-0" />
                 <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Active Longevity</h4>
-                  <p className="text-muted-foreground font-medium">Enhance coordination and reduce joint strain for lifelong health and mobility.</p>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Injury Prevention</h4>
+                  <p className="text-muted-foreground font-medium">Focused on restoration and balance. Learn to identify compensation before pain starts.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <Activity className="w-10 h-10 text-accent flex-shrink-0" />
+                <div>
+                  <h4 className="font-black uppercase tracking-tighter text-xl">Active Restoration</h4>
+                  <p className="text-muted-foreground font-medium">Recover lost capacity and regain structural symmetry for lifelong mobility and clarity.</p>
                 </div>
               </div>
             </div>
@@ -178,9 +178,9 @@ export default function Home() {
       {/* Slogan */}
       <section className="mt-20 text-center py-10 border-y border-white/5">
         <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic mb-4">
-          Master the Body.<br/>
-          <span className="text-primary text-glow-cyan text-4xl md:text-6xl">Elevate the Mind.</span>
+          Do it <span className="text-primary text-glow-cyan italic">Right.</span>
         </h2>
+        <p className="text-muted-foreground font-black uppercase tracking-[0.5em] text-xs">The Global Standard</p>
       </section>
     </Layout>
   );
