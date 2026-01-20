@@ -64,13 +64,11 @@ export default function Neuromotion() {
             <p className="font-bold text-lg italic">"It makes subconscious movement conscious. People stop being prisoners to habit-driven motion."</p>
           </div>
         </div>
-        <div className="relative group">
+        <div className="relative group min-h-[400px] flex items-center justify-center">
           <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
-          <img 
-            src={brainComparisonImg} 
-            alt="Neural Pathways Mapping" 
-            className="rounded-sm border border-white/5 glow-cyan shadow-2xl" 
-          />
+          <div className="w-full h-full border border-white/5 rounded-sm bg-white/[0.02] flex items-center justify-center italic text-muted-foreground font-black uppercase tracking-widest text-xs p-12 text-center">
+            Scientific anatomical mapping of neural pathways in progress
+          </div>
         </div>
       </section>
 
@@ -100,9 +98,6 @@ export default function Neuromotion() {
 
       {/* Cognitive Benefits Section */}
       <section className="mb-32 glass-panel p-12 rounded-sm border-white/10 overflow-hidden relative">
-        <div className="absolute top-0 right-0 p-8 opacity-5">
-          <Brain size={300} />
-        </div>
         <div className="max-w-4xl">
           <Badge className="bg-primary mb-6">Structural Cognition</Badge>
           <h2 className="text-4xl md:text-5xl font-black uppercase italic mb-8 tracking-tighter">
