@@ -5,13 +5,22 @@ import { Link } from "wouter";
 import brainIntegrationImg from "@assets/IMG_0026_1768704291952.jpeg";
 import kidsBenefitsImg from "@assets/IMG_0019_1768704291952.jpeg";
 import adultsBenefitsImg from "@assets/IMG_0020_1768704291952.jpeg";
+import heroSilhouette from "@assets/generated_images/scientific_human_silhouette_anatomical_diagram.png";
 
 export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex flex-col justify-center overflow-hidden pt-4">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-10 w-full h-full">
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden pt-4">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 opacity-20 w-full h-full max-w-4xl pointer-events-none">
+           <img 
+             src={heroSilhouette} 
+             alt="Scientific Silhouette" 
+             className="w-full h-full object-contain mix-blend-screen"
+             style={{ filter: 'brightness(1.2) contrast(1.1)' }}
+           />
+        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-5 w-full h-full pointer-events-none">
            <Brain size={600} className="text-primary animate-pulse mx-auto" />
         </div>
 
