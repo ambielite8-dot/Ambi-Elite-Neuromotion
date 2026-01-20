@@ -45,6 +45,13 @@ export default function Home() {
           transition={{ delay: 0.5, duration: 1 }}
           className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed space-y-8"
         >
+          <div className="py-12 px-8 glass-panel border-primary/20 bg-primary/5 rounded-sm mb-12">
+            <h3 className="text-primary font-black uppercase tracking-widest text-xs mb-4">What Neuromotion Actually Trains</h3>
+            <p className="text-xl text-foreground font-bold leading-relaxed">
+              Neuromotion is the conscious training of how energy moves through both sides of the human body — from the base, through the spine, and into action — restoring bilateral balance, coordination, and control.
+            </p>
+          </div>
+
           <p className="font-medium text-xl text-foreground/80">
             Neuromotion is completion—activating what was always there. Your body is your greatest possession. 
             We bridge the hemispheres to unlock the next stage of human evolution.
@@ -67,6 +74,44 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Explanatory Bridge Section */}
+      <section className="mt-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="space-y-8">
+            <h2 className="text-5xl font-black uppercase italic tracking-tighter leading-none">
+              Modern Life Is <br/><span className="text-accent">Asymmetrical</span>
+            </h2>
+            <p className="text-xl text-muted-foreground font-medium leading-relaxed">
+              Modern life has reduced human movement to repetition and compensation. Neuromotion addresses the neurological cost of asymmetry in a one-sided world. It's not just exercise—it's literacy.
+            </p>
+          </div>
+          <div className="p-8 glass-panel border-white/5 rounded-sm">
+            <h3 className="text-primary font-black uppercase tracking-widest text-xs mb-4">The Lens</h3>
+            <p className="text-lg font-bold italic text-foreground">
+              Neuromotion is always "on." Once learned, it becomes the lens through which you walk, sit, reach, and sleep. It is not something you quit; it is how you live.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Six Laws Teaser */}
+      <section className="mt-32 py-20 bg-white/[0.02] border-y border-white/5">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-8 tracking-tighter">
+            Movement Is Governed by <span className="text-primary">Six Laws</span>
+          </h2>
+          <p className="text-xl text-muted-foreground font-medium mb-12">
+            Balance, precision, power, curvature, stabilization, and timing are not random. Neuromotion identifies and trains the six laws that govern all human movement—whether you are walking, working, or competing.
+          </p>
+          <Link 
+            href="/neuromotion" 
+            className="inline-flex items-center text-primary font-black uppercase tracking-widest hover:gap-4 transition-all"
+          >
+            Explore The Laws <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
       {/* Brain Integration Section */}
       <section className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <motion.div
@@ -75,9 +120,13 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <h2 className="text-5xl font-black mb-8 uppercase leading-none italic">Structural<br/><span className="text-primary text-glow-cyan">Cognition</span></h2>
+          <div className="p-6 glass-panel border-primary/20 bg-primary/5 rounded-sm mb-8">
+            <p className="text-xl text-foreground font-bold italic leading-relaxed">
+              The brain develops through the body.
+            </p>
+          </div>
           <p className="text-muted-foreground text-xl leading-relaxed mb-8 font-medium">
-            Cognitive benefits are structural, not theoretical. Neuromotion increases interhemispheric signaling, 
-            improving executive function, focus, and spatial awareness through systematic motion.
+            When movement becomes symmetrical, neural signaling becomes more efficient—improving focus, coordination, confidence, and recovery. Cognitive benefits are structural, not theoretical.
           </p>
           <div className="grid grid-cols-2 gap-6">
             <div className="p-6 glass-panel border-white/5">
@@ -119,6 +168,9 @@ export default function Home() {
           </motion.div>
           <div>
             <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Youth</span> Development</h3>
+            <p className="text-lg text-foreground font-bold mb-6 italic">
+              Early Neuromotion training helps prevent postural imbalance, coordination gaps, and chronic compensation before they become permanent.
+            </p>
             <div className="space-y-8">
               <div className="flex gap-6">
                 <GraduationCap className="w-10 h-10 text-primary flex-shrink-0" />
@@ -141,6 +193,9 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
             <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-accent">Adult</span> Health</h3>
+            <p className="text-lg text-foreground font-bold mb-6 italic">
+              For adults, Neuromotion restores awareness, balance, and control that was lost through years of unilateral living.
+            </p>
             <div className="space-y-8">
               <div className="flex gap-6">
                 <Heart className="w-10 h-10 text-accent flex-shrink-0" />
