@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Layout } from "@/components/Layout";
+import { getFragment } from "@/lib/location";
 import { Container, Section, Heading, Reveal, ButtonLink, PageHero } from "@/components/kit";
 import { LawGlyph } from "@/components/viz/LawGlyph";
 import { DynamicBalanceLab } from "@/components/viz/DynamicBalanceLab";
@@ -9,8 +10,9 @@ import { cn } from "@/lib/utils";
 
 export default function SixLaws() {
   useEffect(() => {
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash);
+    const frag = getFragment();
+    if (frag) {
+      const el = document.getElementById(frag);
       if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 120);
     }
   }, []);

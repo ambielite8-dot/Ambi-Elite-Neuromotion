@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import { useLocation } from "wouter";
+import { IS_PREVIEW } from "@/lib/location";
 
 const LenisContext = createContext<Lenis | null>(null);
 export const useLenis = () => useContext(LenisContext);
@@ -45,7 +46,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
   // New page: jump to top instantly
   useEffect(() => {
-    if (window.location.hash) return;
+    if (!IS_PREVIEW && window.location.hash) return;
     if (lenis) lenis.scrollTo(0, { immediate: true });
     else window.scrollTo(0, 0);
   }, [location, lenis]);

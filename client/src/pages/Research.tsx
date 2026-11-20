@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ExternalLink, Activity, BrainCircuit, Microscope, LineChart } from "lucide-react";
 import { Layout } from "@/components/Layout";
+import { getFragment } from "@/lib/location";
 import { Container, Section, Heading, Reveal, ButtonLink, PageHero } from "@/components/kit";
 import { REFERENCES, REFERENCE_GROUPS } from "@/data/references";
 
@@ -51,8 +52,9 @@ const PATHWAYS = [
 
 export default function Research() {
   useEffect(() => {
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash);
+    const frag = getFragment();
+    if (frag) {
+      const el = document.getElementById(frag);
       if (el) {
         setTimeout(() => {
           el.scrollIntoView({ behavior: "smooth", block: "center" });
