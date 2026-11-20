@@ -1,118 +1,65 @@
-import { Layout } from "@/components/Layout";
-import { SectionHeader } from "@/components/SectionHeader";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
-import { Heart, Landmark, ShieldCheck, Globe } from "lucide-react";
+import { Microscope, Landmark, GraduationCap, ShieldCheck } from "lucide-react";
 import { FaPaypal, FaStripe } from "react-icons/fa";
+import { Link } from "wouter";
+import { Layout } from "@/components/Layout";
+import { Container, Section, Reveal, PageHero } from "@/components/kit";
 
 export default function Donate() {
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
-        <SectionHeader 
-          title="Support the Mission" 
-          subtitle="Your contributions fuel the Neuromotion discovery, accelerate global research, and provide scholarships."
-        />
-
-        <div className="max-w-6xl mx-auto px-6 pb-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <Card className="glass-panel border-primary/40 bg-primary/5 p-8 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Globe size={80} />
-              </div>
-              <CardContent className="p-0">
-                <div className="w-12 h-12 bg-primary/20 rounded-sm flex items-center justify-center mb-6">
-                  <Globe className="text-primary w-6 h-6" />
-                </div>
-                <Badge className="bg-primary text-primary-foreground mb-4 font-black uppercase tracking-[0.2em] text-[8px]">Priority 1</Badge>
-                <h3 className="text-2xl font-black uppercase mb-4 italic">Global Research</h3>
-                <p className="text-muted-foreground font-medium mb-6 leading-relaxed text-sm">
-                  Funding the peer-reviewed release of bilateral movement discoveries and high-speed motion capture tools.
-                </p>
-                <div className="w-full bg-white/5 rounded-full h-2 mb-2">
-                  <div className="bg-primary h-full rounded-full w-[65%] glow-cyan" />
-                </div>
-                <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                  <span>Research Goal</span>
-                  <span>65% Funded</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="glass-panel border-white/10 p-8">
-              <CardContent className="p-0">
-                <div className="w-12 h-12 bg-white/5 rounded-sm flex items-center justify-center mb-6">
-                  <Landmark className="text-foreground w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-black uppercase mb-4">Gym Facility</h3>
-                <p className="text-muted-foreground font-medium mb-6 leading-relaxed text-sm">
-                  Support the construction of our specialized basketball training facility and AAU team development.
-                </p>
-                <div className="w-full bg-white/5 rounded-full h-2 mb-2">
-                  <div className="bg-foreground h-full rounded-full w-[45%]" />
-                </div>
-                <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                  <span>Phase 1</span>
-                  <span>45% Funded</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="glass-panel border-accent/20 p-8">
-              <CardContent className="p-0">
-                <div className="w-12 h-12 bg-accent/10 rounded-sm flex items-center justify-center mb-6">
-                  <Heart className="text-accent w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-black uppercase mb-4">NST Scholarships</h3>
-                <p className="text-muted-foreground font-medium mb-6 leading-relaxed text-sm">
-                  Provide access to Neuromotor Symmetry Training for underprivileged youth and aspiring professionals.
-                </p>
-                <Button variant="outline" className="w-full border-accent/20 text-accent font-black uppercase tracking-widest text-[10px]">Learn More</Button>
-              </CardContent>
-            </Card>
+      <PageHero
+        brand="ambi"
+        eyebrow="Support the mission"
+        tone="power"
+        title={
+          <>
+            Help us teach the world <span className="grad-text">how to move.</span>
+          </>
+        }
+        lead="Neuromotion research and education are independent. Your support funds publication, research tools, educational content, scholarships and the Ambi Elite training facility."
+      />
+      <Section className="pt-0">
+        <Container>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              { icon: Microscope, tone: "text-precision", title: "Research", desc: "Motion capture, EEG and long-term studies that put Neuromotion to the test, and publishing the results openly." },
+              { icon: Landmark, tone: "text-white", title: "Training facility", desc: "A dedicated basketball facility for youth NST and AAU team development." },
+              { icon: GraduationCap, tone: "text-power", title: "NST scholarships", desc: "Access to Neuromotor Symmetry Training for young people and athletes who couldn't otherwise afford it." },
+            ].map((it, i) => (
+              <Reveal key={it.title} delay={i * 0.06} className="panel rounded-3xl p-8">
+                <it.icon className={`h-8 w-8 ${it.tone}`} />
+                <h3 className="mt-6 font-display text-2xl font-semibold text-white">{it.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{it.desc}</p>
+              </Reveal>
+            ))}
           </div>
 
-          <div className="space-y-8 max-w-2xl mx-auto">
-            <h2 className="text-3xl font-black uppercase text-center mb-12 italic">Choose a <span className="text-primary">Payment Method</span></h2>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-4 p-8 rounded-sm bg-white text-black hover:bg-white/90 transition-all group"
-              >
-                <FaStripe className="w-12 h-12" />
-                <div className="text-left">
-                  <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Pay with</p>
-                  <p className="text-xl font-black uppercase tracking-tighter">Stripe</p>
-                </div>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-4 p-8 rounded-sm bg-[#0070ba] text-white hover:bg-[#0070ba]/90 transition-all group"
-              >
-                <FaPaypal className="w-12 h-12" />
-                <div className="text-left">
-                  <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Pay with</p>
-                  <p className="text-xl font-black uppercase tracking-tighter">PayPal</p>
-                </div>
-              </motion.button>
+          <Reveal className="mx-auto mt-16 max-w-2xl">
+            <h2 className="text-center font-display text-3xl font-semibold text-white">Give</h2>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              <Link href="/contact" className="flex items-center justify-center gap-4 rounded-2xl bg-white p-6 text-black transition hover:bg-white/90">
+                <FaStripe className="h-10 w-10" />
+                <span className="text-left">
+                  <span className="block text-[11px] font-semibold uppercase tracking-widest opacity-60">Give with</span>
+                  <span className="block text-xl font-semibold">Card</span>
+                </span>
+              </Link>
+              <Link href="/contact" className="flex items-center justify-center gap-4 rounded-2xl bg-[#0070ba] p-6 text-white transition hover:bg-[#0070ba]/90">
+                <FaPaypal className="h-9 w-9" />
+                <span className="text-left">
+                  <span className="block text-[11px] font-semibold uppercase tracking-widest opacity-70">Give with</span>
+                  <span className="block text-xl font-semibold">PayPal</span>
+                </span>
+              </Link>
             </div>
-
-            <div className="p-8 border border-white/5 rounded-sm bg-white/[0.02] text-center">
-              <ShieldCheck className="w-8 h-8 mx-auto mb-4 opacity-20" />
-              <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest leading-relaxed">
-                All transactions are secure and encrypted.<br/>
-                Ambi Elite Foundation is a registered non-profit organization.
-              </p>
+            <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/[0.08] p-5 text-sm leading-relaxed text-muted-foreground">
+              <ShieldCheck className="h-5 w-5 shrink-0 text-precision" />
+              Online giving is being set up. Until it's live, reach out through the contact page and we'll arrange your gift
+              directly. Transparency and accountability are core values: we'll report how every dollar is used.
             </div>
-          </div>
-        </div>
-      </div>
+          </Reveal>
+        </Container>
+      </Section>
     </Layout>
   );
 }

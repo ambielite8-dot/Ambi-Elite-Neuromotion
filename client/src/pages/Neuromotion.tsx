@@ -1,143 +1,281 @@
 import { Layout } from "@/components/Layout";
-import { SectionHeader } from "@/components/SectionHeader";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { Activity, Zap, Target, Brain, Globe, ShieldCheck, Heart, ArrowRight } from "lucide-react";
-import silhouetteImg from "@assets/stock_images/human_body_silhouett_d804f4e0.jpg";
+import { Container, Section, Heading, Reveal, ButtonLink, PageHero, Cite } from "@/components/kit";
+import { ChainExplorer } from "@/components/viz/ChainExplorer";
+import { HandNerveMap } from "@/components/viz/HandNerveMap";
+import { HipStability } from "@/components/viz/HipStability";
+import { AmbiCurve } from "@/components/viz/AmbiCurve";
+import { BrainBridge } from "@/components/viz/BrainBridge";
+import { Check, X } from "lucide-react";
+
+const NOT = ["a workout", "a sport", "therapy", "yoga", "meditation"];
+
+const EXPLAINS = [
+  { k: "Force", v: "How power is generated from a stable Base." },
+  { k: "Precision", v: "How control is kept on the executing side." },
+  { k: "Balance", v: "How the body stays organized over its base." },
+  { k: "Cognition", v: "How thinking integrates with motion." },
+];
+
+const SIGNS = [
+  "One shoulder higher than the other",
+  "One hip tighter, one leg always leading",
+  "One hand doing all the work",
+  "A head that tilts or juts forward",
+  "Chronic stiffness and “normal” pain",
+  "Fatigue without explanation",
+  "Loss of confidence in movement",
+];
+
+const YOUTH = ["Balance", "Coordination", "Range of motion", "Reaction speed", "Confidence in movement", "Mental clarity", "Body awareness", "Adaptability"];
 
 export default function Neuromotion() {
-  const points = [
-    {
-      title: "Dual Energy Cycle",
-      subtitle: "Universal Mechanism",
-      icon: Activity,
-      color: "text-primary",
-      borderColor: "border-primary",
-      body: "Most systems treat symptoms like pain or poor posture. Neuromotion explains the underlying mechanism: how energy moves, how motion is organized, and how asymmetry forms neurologically. You don't just train—you understand your body for the first time."
-    },
-    {
-      title: "Precision Chain",
-      subtitle: "Inside Grip (Cyan)",
-      icon: Target,
-      color: "text-primary",
-      borderColor: "border-primary",
-      body: "Governed by the median nerve. Each side of your body contains an Inner precision chain. Neuromotion organizes the science of differentiated nerve pathways into the Inner Grip—the bridge to the mind's analytical center."
-    },
-    {
-      title: "Power Chain",
-      subtitle: "Outside Grip (Orange)",
-      icon: Zap,
-      color: "text-accent",
-      borderColor: "border-accent",
-      body: "Governed by the ulnar nerve. The Outer power chain handles creativity, flow, and explosive force. Control is achieved only when energy is trapped between the Inner and Outer grips."
-    },
-    {
-      title: "The Ambi Curve",
-      subtitle: "Natural Motion",
-      icon: ShieldCheck,
-      color: "text-foreground",
-      borderColor: "border-white/20",
-      body: "Humans move in arcs, not straight lines. Neuromotion explains why one leg stabilizes while the other extends, and why one side often cuts off motion early. Once learned, you can self-correct for life."
-    }
-  ];
-
   return (
     <Layout>
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background z-10" />
-        <img 
-          src={silhouetteImg} 
-          alt="" 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] opacity-[0.03] mix-blend-lighten grayscale"
-          style={{ filter: 'brightness(1.5) contrast(1.2)' }}
-        />
-      </div>
+      <PageHero
+        eyebrow="The Science"
+        title={
+          <>
+            How your body is <span className="grad-text">actually wired</span> to move.
+          </>
+        }
+        lead="Neuromotion is the science of how the human nervous system organizes movement, balance and energy across both sides of the body. Neuromotor Symmetry Training (NST) is the applied system that develops it."
+      >
+        <Reveal delay={0.15} className="mt-12 flex flex-wrap items-center gap-2">
+          <span className="mr-2 text-sm text-muted-foreground">Neuromotion is not</span>
+          {NOT.map((n) => (
+            <span key={n} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-sm text-white/70">
+              <X className="h-3.5 w-3.5 text-muted-foreground" /> {n}
+            </span>
+          ))}
+          <span className="ml-2 text-sm text-white">…yet it intersects with all of them.</span>
+        </Reveal>
+      </PageHero>
 
-      <div className="relative z-10">
-        <SectionHeader 
-          title="The Neuromotion Engine" 
-          subtitle="The revolutionary study of how energy, motion, and control flow through the human body via bilateral coordination."
-        />
+      <Section className="pt-4">
+        <Container>
+          <div className="grid gap-4 md:grid-cols-4">
+            {EXPLAINS.map((e, i) => (
+              <Reveal key={e.k} delay={i * 0.06} className="panel rounded-2xl p-6">
+                <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-precision">It explains</div>
+                <div className="mt-3 font-display text-2xl font-semibold text-white">{e.k}</div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{e.v}</p>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                q: "Is it physical training?",
+                a: "Partly, but that's too small. Training builds strength, endurance, speed and technique. Neuromotion builds symmetry, integration, efficiency, control and awareness. You can be strong and still asymmetrical. You can be skilled and still neurologically incomplete.",
+              },
+              {
+                q: "Is it cognitive training?",
+                a: "Yes, through the body. The brain relies on sensory feedback, coordination, balance and timing. Neuromotion trains the hemisphere behind each side of the body, and the bridge between them.",
+              },
+              {
+                q: "Is it the new yoga?",
+                a: "No, but it explains why yoga works. Yoga touches awareness, symmetry and breath. Neuromotion defines the laws underneath, maps energy transfer, trains both sides equally and measures progress.",
+              },
+            ].map((x, i) => (
+              <Reveal key={x.q} delay={i * 0.06} className="rounded-2xl border border-white/[0.07] p-6">
+                <h3 className="font-display text-xl font-semibold text-white">{x.q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{x.a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
-        {/* Big Picture Section */}
-        <section className="mb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div className="space-y-8">
-            <h2 className="text-5xl font-black uppercase italic tracking-tighter leading-none">
-              Why you are <br/><span className="text-primary text-glow-cyan">Imbalanced</span>
-            </h2>
-            <p className="text-xl text-muted-foreground font-medium leading-relaxed">
-              Neuromotion reveals that humans are built with a Dual Energy Cycle. While most people only develop one directional movement pattern, we show how to activate both intentionally, reframing ambidexterity from a "skill" to a natural human capacity.
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="01 · The wiring"
+            title="Every side has two chains."
+            lead="One of the most overlooked truths in human movement: each side of the body is not a single unit. It carries an Inner (precision) chain and an Outer (power) chain. On the dominant side they work together on autopilot. On the other side the chains, nerves and muscles all exist, but they were never coordinated."
+          />
+          <Reveal className="mt-12">
+            <ChainExplorer />
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="02 · The hand"
+            title={
+              <>
+                Median nerve. <span className="text-precision">Inner Grip.</span> Ulnar nerve. <span className="text-power">Outer Grip.</span>
+              </>
+            }
+            lead="Your hand is the clearest window into the system. Two nerves from different roots in your neck split the hand into a precision side and a power side."
+          />
+          <Reveal className="mt-12">
+            <HandNerveMap />
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="03 · The hips"
+            tone="power"
+            title="Hip stability is the foundation."
+            lead="We are always leaning on one side and anchoring with the other, and the hips take the hit first. A Base that can't hold the pelvis level hands the problem to the spine, the knees and the neck."
+          />
+          <Reveal className="mt-12">
+            <HipStability />
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="04 · The Ambi Curve"
+            title="Humans move in arcs, not lines."
+            lead="Energy travels from the Base, through the hips and spine, out to the Anchor along a curve, diagonally across the body. You have two of these arcs. Most people have only ever trained one."
+          />
+          <Reveal className="mt-12">
+            <AmbiCurve />
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="05 · The brain"
+            title={
+              <>
+                The corpus callosum: <span className="grad-text">the bridge.</span>
+              </>
+            }
+            lead="This is where Neuromotion goes beyond movement. Each side of your body is driven by the opposite side of your brain, and the two hemispheres talk through one bridge."
+          />
+          <Reveal className="mt-12">
+            <BrainBridge />
+          </Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                t: "The brain rewires with practice",
+                b: "Adults who learned to juggle showed measurable changes in grey matter, which faded when practice stopped",
+                c: "draganski2004",
+                b2: ", and in white-matter connections, regardless of how skilled they got",
+                c2: "scholz2009",
+              },
+              {
+                t: "The two sides are linked",
+                b: "Train only one limb, and the untrained opposite limb gets about 12% stronger on average. The nervous system shares what one side learns with the other",
+                c: "manca2017",
+              },
+              {
+                t: "It's about integration, not dominance",
+                b: "People aren't “left-brained” or “right-brained.” Each hemisphere has specialties, and performance comes from how well they cooperate",
+                c: "nielsen2013",
+              },
+            ].map((x, i) => (
+              <Reveal key={x.t} delay={i * 0.06} className="panel rounded-2xl p-6">
+                <h3 className="font-display text-xl font-semibold text-white">{x.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {x.b}
+                  <Cite id={x.c} />
+                  {x.b2}
+                  {x.c2 && <Cite id={x.c2} />}.
+                </p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-6 rounded-2xl border border-primary/20 bg-primary/[0.05] p-6 md:p-8">
+            <p className="font-display text-xl leading-relaxed text-white md:text-2xl">
+              Benjamin Franklin saw it more than two centuries ago. Writing as the left hand, he complained that its twin
+              sister, the right, got every lesson, while “if by chance I touched a pencil, a pen, or a needle, I was bitterly rebuked.”
+              <Cite id="franklin" />
             </p>
-            <div className="p-8 glass-panel border-primary/20 bg-primary/5 rounded-sm">
-              <h4 className="text-primary font-black uppercase tracking-widest text-xs mb-4">The Discovery</h4>
-              <p className="font-bold text-lg italic">"It makes subconscious movement conscious. People stop being prisoners to habit-driven motion."</p>
+            <p className="mt-4 text-muted-foreground">What he intuited, Neuromotion now explains.</p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+            <div>
+              <Heading
+                eyebrow="06 · Reverse compensation"
+                tone="power"
+                title="Most people aren't injured. They're compensating."
+                lead="Compensation is the body solving a problem without fixing the cause. It shifts work to the stronger side, the dominant limb, the familiar pattern. At first that's intelligent. Over decades it becomes destructive."
+              />
+              <Reveal className="mt-8 space-y-4 text-muted-foreground">
+                <p>
+                  Muscles don't fail first. <span className="text-white">Coordination fails first.</span> By the time pain
+                  shows up, compensation has been in place for years. That's why so many fixes don't stick: stretching one
+                  tight spot, strengthening one weak muscle, cracking the back, taping the knee. They can bring relief, but
+                  they don't change why the body is compensating.
+                </p>
+                <p className="font-display text-2xl font-semibold text-white">You can't stretch your way out of a neurological pattern.</p>
+                <p>
+                  Reversing compensation is not about forcing symmetry. It's about restoring choice: waking up dormant
+                  pathways, rebalancing load, restoring communication between hemispheres, and teaching both sides to
+                  stabilize and execute.
+                </p>
+              </Reveal>
             </div>
+            <Reveal className="panel self-start rounded-3xl p-7 md:p-9">
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-power">The signs you've normalized</div>
+              <ul className="mt-6 space-y-3">
+                {SIGNS.map((s) => (
+                  <li key={s} className="flex items-start gap-3 text-white/90">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 border-t border-white/[0.06] pt-6 font-mono text-[11px] uppercase tracking-[0.22em] text-precision">
+                What people notice when it reverses
+              </div>
+              <ul className="mt-4 grid grid-cols-1 gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+                {["Better posture without cueing", "Stability without bracing", "Coordination without thinking", "Less fatigue", "More confidence in movement", "Clearer body awareness"].map((s) => (
+                  <li key={s} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-precision" /> {s}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
-          <div className="relative group min-h-[400px] flex items-center justify-center overflow-hidden rounded-sm border border-white/5 bg-white/[0.02]">
-            <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
-            <img 
-              src={silhouetteImg} 
-              alt="Scientific Human Silhouette" 
-              className="w-full h-full object-cover opacity-40 mix-blend-lighten shadow-2xl transition-all group-hover:opacity-60 group-hover:scale-105 duration-700"
-              style={{ filter: 'brightness(1.2) contrast(1.1)' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-          </div>
-        </section>
-      </div>
+        </Container>
+      </Section>
 
-      {/* Detailed Points */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
-        {points.map((point, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.1 }}
-          >
-            <Card className={`glass-panel border-l-4 ${point.borderColor} h-full group hover:bg-white/[0.02] transition-colors`}>
-              <CardContent className="p-10">
-                <div className={`${point.color} mb-6`}>
-                  <point.icon className="w-12 h-12" />
-                </div>
-                <span className={`text-[10px] font-black uppercase tracking-[0.3em] ${point.color}`}>{point.subtitle}</span>
-                <h3 className="text-3xl font-black font-display mb-4 uppercase mt-1">{point.title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed font-medium">{point.body}</p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Cognitive Benefits Section */}
-      <section className="mb-32 glass-panel p-12 rounded-sm border-white/10 overflow-hidden relative">
-        <div className="max-w-4xl">
-          <Badge className="bg-primary mb-6">Structural Cognition</Badge>
-          <h2 className="text-4xl md:text-5xl font-black uppercase italic mb-8 tracking-tighter">
-            Push your brain toward <br/><span className="text-primary">Peak Functionality</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <p className="text-muted-foreground text-lg font-medium leading-relaxed">
-              Neuromotion targets cognition through the body—how the brain evolved to learn. By increasing interhemispheric signaling and corpus callosum communication, we enhance executive function and spatial awareness organically.
-            </p>
-            <p className="text-muted-foreground text-lg font-medium leading-relaxed">
-              This is the most behavior-based way to elevate your mind without chemicals or artificial stimulants. Every movement becomes an opportunity to regain symmetry and refine control.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div className="glass-panel p-12 rounded-sm border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 text-center">
-        <h3 className="text-3xl font-display font-black mb-6 uppercase leading-none italic">
-          Neuromotion <span className="text-primary">Never Ends</span>
-        </h3>
-        <p className="text-xl text-foreground font-medium leading-relaxed italic max-w-3xl mx-auto">
-          "Once learned, Neuromotion integrates into daily life—walking, standing, reaching. It creates a relationship with the body instead of resistance to it. You don't add something new. You activate what was always there."
-        </p>
-      </div>
+      <Section>
+        <Container>
+          <Heading
+            align="center"
+            eyebrow="07 · Stay young"
+            title={
+              <>
+                Aging is inevitable. <span className="text-precision">Decline is not.</span>
+              </>
+            }
+            lead="What most people call “getting old” is largely the slow loss of neural integration, movement symmetry and body awareness. The qualities we associate with youth are not age-dependent. They're use-dependent."
+          />
+          <Reveal className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2">
+            {YOUTH.map((y) => (
+              <span key={y} className="rounded-full border border-primary/25 bg-primary/[0.06] px-4 py-2 text-sm font-medium text-white">
+                {y}
+              </span>
+            ))}
+          </Reveal>
+          <Reveal className="mt-14 flex flex-wrap justify-center gap-3">
+            <ButtonLink href="/six-laws">Learn the Six Laws</ButtonLink>
+            <ButtonLink href="/research" variant="ghost">
+              See the research
+            </ButtonLink>
+          </Reveal>
+        </Container>
+      </Section>
     </Layout>
   );
 }

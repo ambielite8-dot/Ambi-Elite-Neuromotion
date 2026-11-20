@@ -1,151 +1,96 @@
-import { motion } from "framer-motion";
+import { DollarSign, Landmark, Trophy, Users, Zap } from "lucide-react";
 import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Landmark, Trophy, Users, Zap, DollarSign } from "lucide-react";
-import { Link } from "wouter";
+import { Container, Section, Heading, Reveal, ButtonLink, Eyebrow, Cite } from "@/components/kit";
 import gymImg from "@assets/IMG_0025_1768795739004.jpeg";
 
 export default function Athletics() {
   return (
     <Layout>
-      <div className="min-h-screen bg-background pb-12">
-        {/* Hero Section */}
-        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-4">
-          <div 
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundImage: `url(${gymImg})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-          </div>
+      <section className="relative flex min-h-[86vh] items-end overflow-hidden pb-20 pt-32">
+        <img src={gymImg} alt="The Ambi Elite training court" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+        <Container className="relative">
+          <Reveal>
+            <Eyebrow>Ambi Athletics</Eyebrow>
+            <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[0.95] text-white md:text-8xl">
+              A second side is the <span className="grad-text">ultimate edge.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl">
+              Plenty of players can do a few things with either hand. Very few can write, dribble and shoot with equal
+              control. That's what Ambi Elite builds, on the court and beyond it.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <ButtonLink href="/donate">Support the facility</ButtonLink>
+              <ButtonLink href="/contact" variant="ghost">
+                Join the AAU team
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
 
-          <div className="container relative z-10 px-6 text-center py-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="font-display font-black text-6xl md:text-8xl tracking-tighter uppercase mb-6 leading-none">
-                Ambi <span className="text-primary">Athletics</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium uppercase tracking-widest mb-10">
-                Revolutionizing Sports Through Neuromotion
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/donate">
-                  <Button size="lg" className="h-14 px-10 text-lg uppercase font-black tracking-tighter glow-cyan w-full sm:w-auto">
-                    Support the Facility
-                  </Button>
-                </Link>
-                <Button size="lg" variant="outline" className="h-14 px-10 text-lg uppercase font-black tracking-tighter border-primary/50 hover:bg-primary/10 w-full sm:w-auto">
-                  Join the AAU Team
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Fundraising Section */}
-        <section className="py-24 border-y border-white/5 bg-white/[0.02]">
-          <div className="container px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="font-display font-black text-4xl md:text-5xl tracking-tighter uppercase mb-8">
-                  The <span className="text-primary">Future</span> of Training
-                </h2>
-                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                  <p>
-                    We are raising funds to build a state-of-the-art basketball training facility dedicated to youth development (ages 6-14). This isn't just a gym; it's a center for **Neuromotor Symmetry Training (NST)**.
-                  </p>
-                  <p>
-                    By integrating bilateral motor organization into basketball fundamentals, we create athletes who move with unparalleled precision and power. Our goal is to revolutionize the game by building complete body control from the ground up.
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-6 mt-12">
-                  <Card className="bg-white/5 border-white/10">
-                    <CardContent className="p-6">
-                      <Landmark className="w-10 h-10 text-primary mb-4" />
-                      <h3 className="font-bold uppercase tracking-widest text-sm mb-2">Facility</h3>
-                      <p className="text-2xl font-black text-foreground uppercase tracking-tighter">New Gym</p>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-white/5 border-white/10">
-                    <CardContent className="p-6">
-                      <Trophy className="w-10 h-10 text-primary mb-4" />
-                      <h3 className="font-bold uppercase tracking-widest text-sm mb-2">Team</h3>
-                      <p className="text-2xl font-black text-foreground uppercase tracking-tighter">AAU Elite</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-orange-500 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                <div className="relative aspect-video rounded-lg overflow-hidden border border-white/10">
-                  <img src={gymImg} alt="Ambi Elite Training Facility" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-                </div>
-              </div>
+      <Section>
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <Heading
+              eyebrow="The facility"
+              title="The future of training."
+              lead="We're raising funds to build a dedicated basketball training facility for youth development (ages 6–14). Not just a gym: a center for Neuromotor Symmetry Training, where bilateral motor organization is built into the fundamentals from day one."
+            />
+            <div className="grid grid-cols-2 gap-4">
+              <Reveal className="panel rounded-2xl p-6">
+                <Landmark className="h-7 w-7 text-precision" />
+                <div className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Facility</div>
+                <div className="mt-1 font-display text-2xl font-semibold text-white">New gym</div>
+              </Reveal>
+              <Reveal delay={0.06} className="panel rounded-2xl p-6">
+                <Trophy className="h-7 w-7 text-power" />
+                <div className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Team</div>
+                <div className="mt-1 font-display text-2xl font-semibold text-white">AAU Elite</div>
+              </Reveal>
+              <Reveal delay={0.1} className="panel col-span-2 rounded-2xl p-6 text-sm leading-relaxed text-muted-foreground">
+                <span className="font-medium text-white">Why it matters for athletes:</span> higher loads expose asymmetry
+                faster. In professional soccer, untreated strength imbalances raised hamstring-injury risk, and correcting
+                them brought it back toward normal
+                <Cite id="croisier2008" />. Weaker hips predicted non-contact ACL tears
+                <Cite id="khayambashi2016" />.
+              </Reveal>
             </div>
           </div>
-        </section>
+        </Container>
+      </Section>
 
-        {/* Scholarships & NIL */}
-        <section className="py-24">
-          <div className="container px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display font-black text-4xl md:text-5xl tracking-tighter uppercase mb-6">
-                NIL & <span className="text-primary">Scholarships</span>
-              </h2>
-              <p className="text-xl text-muted-foreground uppercase tracking-widest font-medium">
-                Unlocking potential through access
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: DollarSign,
-                  title: "NIL Deals",
-                  desc: "We provide NIL opportunities for our athletes, recognizing their value and commitment to the Neuromotion standard."
-                },
-                {
-                  icon: Users,
-                  title: "AAU Team",
-                  desc: "Ambi Elite AAU competes at the highest level, applying science-backed training to dominate the court."
-                },
-                {
-                  icon: Zap,
-                  title: "NST Scholarships",
-                  desc: "We offer scholarships for NST training to ensure every dedicated athlete can master complete body control."
-                }
-              ].map((item, i) => (
-                <Card key={i} className="bg-black border-white/5 hover:border-primary/50 transition-colors group">
-                  <CardContent className="p-10">
-                    <item.icon className="w-12 h-12 text-primary mb-6 transition-transform group-hover:scale-110" />
-                    <h3 className="text-2xl font-black uppercase tracking-tighter mb-4">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="mt-20 p-12 rounded-2xl bg-gradient-to-br from-primary/20 to-orange-500/20 border border-primary/20 text-center">
-              <h3 className="font-display font-black text-3xl uppercase mb-6">Support the Revolution</h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-                Join us in building the global authority on athletic performance. Every donation goes directly towards the facility, scholarships, and revolutionary training for the next generation.
-              </p>
-              <Link href="/donate">
-                <Button size="lg" className="h-14 px-12 text-xl font-black uppercase tracking-tighter glow-cyan">
-                  Donate Now
-                </Button>
-              </Link>
-            </div>
+      <Section>
+        <Container>
+          <Heading align="center" eyebrow="Access" title="NIL & scholarships." lead="Unlocking potential through access." />
+          <div className="mt-14 grid gap-4 md:grid-cols-3">
+            {[
+              { icon: DollarSign, title: "NIL deals", desc: "NIL opportunities for our athletes, recognizing their value and their commitment to the Neuromotion standard." },
+              { icon: Users, title: "AAU team", desc: "Ambi Elite AAU competes at a high level, applying science-backed bilateral training on the court." },
+              { icon: Zap, title: "NST scholarships", desc: "Scholarships for NST so every dedicated athlete can master complete body control, whatever their means." },
+            ].map((it, i) => (
+              <Reveal key={it.title} delay={i * 0.06} className="panel rounded-3xl p-8">
+                <it.icon className="h-8 w-8 text-precision" />
+                <h3 className="mt-6 font-display text-2xl font-semibold text-white">{it.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{it.desc}</p>
+              </Reveal>
+            ))}
           </div>
-        </section>
-      </div>
+          <Reveal className="mt-16 rounded-[2rem] border border-white/10 bg-gradient-to-br from-primary/15 via-transparent to-accent/15 p-10 text-center md:p-16">
+            <h3 className="font-display text-4xl font-semibold text-white">Build the next generation.</h3>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              Every gift goes toward the facility, scholarships and training for young athletes who will grow up using both
+              sides of their body.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <ButtonLink href="/donate" variant="power">
+                Donate now
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
     </Layout>
   );
 }

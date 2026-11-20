@@ -1,81 +1,113 @@
+import { useEffect } from "react";
 import { Layout } from "@/components/Layout";
-import { SectionHeader } from "@/components/SectionHeader";
-import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
-
-const laws = [
-  {
-    number: "01",
-    title: "The Base",
-    side: "STABILIZATION",
-    desc: "The grounding side responsible for weight distribution and energy generation. Without the Base, the Attack is hollow."
-  },
-  {
-    number: "02",
-    title: "The Anchor",
-    side: "EXECUTION",
-    desc: "The executing side responsible for extension, direction, and task completion. The Anchor is the expression of the Base's power."
-  },
-  {
-    number: "03",
-    title: "Inner Grip",
-    side: "PRECISION CHAIN",
-    desc: "The median nerve governs fine motor control. Cyan logic meets physical accuracy. thumb • index • middle."
-  },
-  {
-    number: "04",
-    title: "Outer Grip",
-    side: "POWER CHAIN",
-    desc: "The ulnar nerve builds stability and force. Orange creativity meets structural force. ring • pinky."
-  },
-  {
-    number: "05",
-    title: "The Ambi Curve",
-    side: "ENERGY FLOW",
-    desc: "Humans move in arcs, not lines. Energy transfers via spinal and hip alignment in a natural curved path."
-  },
-  {
-    number: "06",
-    title: "Dynamic Balance",
-    side: "THE RULE",
-    desc: "Precision and power must alternate. When one side is Inside Grip, the other MUST be Outside Grip to prevent energy leakage."
-  }
-];
+import { getFragment } from "@/lib/location";
+import { Container, Section, Heading, Reveal, ButtonLink, PageHero } from "@/components/kit";
+import { LawGlyph } from "@/components/viz/LawGlyph";
+import { DynamicBalanceLab } from "@/components/viz/DynamicBalanceLab";
+import { AmbiCurve } from "@/components/viz/AmbiCurve";
+import { LAWS } from "@/data/laws";
+import { cn } from "@/lib/utils";
 
 export default function SixLaws() {
+  useEffect(() => {
+    const frag = getFragment();
+    if (frag) {
+      const el = document.getElementById(frag);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 120);
+    }
+  }, []);
+
   return (
     <Layout>
-      <SectionHeader title="The Six Laws" subtitle="The immutable laws of bilateral organization and human motor fluency." />
+      <PageHero
+        eyebrow="The Six Laws of Neuromotion"
+        title={
+          <>
+            The laws that govern <span className="grad-text">every movement</span> you make.
+          </>
+        }
+        lead="Balance, precision, power, curvature, stabilization and timing are not random. Walking, writing, lifting, throwing, sitting and sleeping all obey the same six laws. Learn them once and you have a language for your body for the rest of your life."
+      >
+        <Reveal delay={0.15} className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-6">
+          {LAWS.map((l) => (
+            <a key={l.n} href={`#law-${l.n}`} className="group rounded-2xl border border-white/[0.08] bg-black/20 p-3 text-center transition hover:border-white/20">
+              <LawGlyph law={l.n} className="mx-auto h-14 w-14" />
+              <div className="mt-2 text-xs font-semibold text-white/80 group-hover:text-white">{l.name}</div>
+            </a>
+          ))}
+        </Reveal>
+      </PageHero>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {laws.map((law, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="glass-panel p-10 rounded-sm relative group overflow-hidden"
-          >
-            <div className={`absolute top-0 left-0 w-full h-1 transition-all duration-500 ${i % 2 === 0 ? 'bg-primary group-hover:h-2 glow-cyan' : 'bg-accent group-hover:h-2 glow-orange'}`} />
-            
-            <div className="flex justify-between items-start mb-6">
-              <span className="text-6xl font-black font-display text-white/5 group-hover:text-white/10 transition-colors">
-                {law.number}
-              </span>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className={`w-4 h-4 ${i % 2 === 0 ? 'text-primary' : 'text-accent'}`} />
-                <span className="text-[10px] font-black uppercase tracking-widest opacity-60">{law.side}</span>
-              </div>
-            </div>
+      <Section className="pt-6">
+        <Container className="space-y-6">
+          {LAWS.map((law) => (
+            <Reveal key={law.n}>
+              <article id={`law-${law.n}`} className="panel scroll-mt-24 overflow-hidden rounded-3xl">
+                <div className="grid lg:grid-cols-[280px_1fr_1fr]">
+                  <div className="relative flex items-center gap-5 border-b border-white/[0.06] p-7 lg:flex-col lg:items-start lg:justify-between lg:border-b-0 lg:border-r">
+                    <div className="font-display text-7xl font-semibold leading-none text-white/[0.07] lg:text-9xl">0{law.n}</div>
+                    <LawGlyph law={law.n} className="h-24 w-24 lg:h-32 lg:w-32" />
+                  </div>
+                  <div className="p-7 md:p-9">
+                    <div
+                      className={cn(
+                        "font-mono text-[11px] uppercase tracking-[0.22em]",
+                        law.tone === "precision" ? "text-precision" : law.tone === "power" ? "text-power" : "text-muted-foreground",
+                      )}
+                    >
+                      Law {law.n} · {law.role}
+                    </div>
+                    <h2 className="mt-2 font-display text-4xl font-semibold text-white">{law.name}</h2>
+                    <p className="mt-4 leading-relaxed text-muted-foreground">{law.long}</p>
+                  </div>
+                  <div className="grid gap-px border-t border-white/[0.06] bg-white/[0.04] lg:border-l lg:border-t-0">
+                    <div className="bg-[#0b1220] p-7">
+                      <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-precision">In daily life</div>
+                      <p className="mt-2 text-sm leading-relaxed text-white/85">{law.inDailyLife}</p>
+                    </div>
+                    <div className="bg-[#0b1220] p-7">
+                      <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-power">When it fails</div>
+                      <p className="mt-2 text-sm leading-relaxed text-white/85">{law.whenItFails}</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </Container>
+      </Section>
 
-            <h3 className="text-3xl font-display font-black mb-4 uppercase tracking-tighter group-hover:text-primary transition-colors">{law.title}</h3>
-            <p className="text-muted-foreground leading-relaxed font-medium text-sm">
-              {law.desc}
-            </p>
-          </motion.div>
-        ))}
-      </div>
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="Law 6 in action"
+            title="Try the Dynamic Balance Rule."
+            lead="Precision on one side, power on the other. Flip the switches and watch what happens when both sides try to do the same job."
+          />
+          <Reveal className="mt-12">
+            <DynamicBalanceLab />
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="Law 5 in action"
+            title="See the Ambi Curve."
+            lead="Switch between the cycle you already own and the one you never built."
+          />
+          <Reveal className="mt-12">
+            <AmbiCurve />
+          </Reveal>
+          <Reveal className="mt-14 flex flex-wrap gap-3">
+            <ButtonLink href="/nst">Train the laws with NST</ButtonLink>
+            <ButtonLink href="/neuromotion" variant="ghost">
+              Back to the science
+            </ButtonLink>
+          </Reveal>
+        </Container>
+      </Section>
     </Layout>
   );
 }
