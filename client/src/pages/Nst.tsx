@@ -1,153 +1,198 @@
+import { Check, Info } from "lucide-react";
 import { Layout } from "@/components/Layout";
-import { SectionHeader } from "@/components/SectionHeader";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Check, User, Users, Video, Target, Info, ShieldCheck, Heart, Activity } from "lucide-react";
-import { motion } from "framer-motion";
+import { Container, Section, Heading, Reveal, ButtonLink, PageHero } from "@/components/kit";
+import { cn } from "@/lib/utils";
+
+const PHASES = [
+  { year: 1, name: "Awareness", color: "bg-primary", text: "Feel the Base and Anchor. Find your Inner and Outer Grip on both sides. Notice compensation before it notices you." },
+  { year: 2, name: "Alignment", color: "bg-sky-400", text: "Organize the hips, spine and ribs. Contain energy between the chains and restore the Ambi Curve on your dominant side." },
+  { year: 3, name: "Integration", color: "bg-amber-400", text: "Build the dormant energy cycle. Switch roles: the dominant side learns to stabilize, the other side learns to execute." },
+  { year: 4, name: "Fluency", color: "bg-accent", text: "Both cycles on demand, under speed and pressure, in your sport and your life. Symmetry stops being training and becomes who you are." },
+];
+
+const DEVELOPS = [
+  "Awareness of Base and Anchor roles",
+  "Bilateral grip control: Inner and Outer, both sides",
+  "Balanced energy transfer along the Ambi Curve",
+  "Role-switching fluency between sides",
+  "Interhemispheric cooperation through movement",
+];
+
+const REQUIREMENTS = [
+  "Weekly progression videos",
+  "Target sport or activity",
+  "Strength and weakness assessment",
+  "Age, height and weight",
+  "Commitment to the 208-week curriculum",
+];
+
+const TIERS = [
+  {
+    name: "Core",
+    price: "100",
+    tagline: "For most people",
+    features: ["208-week curriculum (4 years)", "1 class per week", "Weekly curriculum updates", "Full content library", "Global community access"],
+    featured: false,
+  },
+  {
+    name: "Guided",
+    price: "200",
+    tagline: "Personalized support",
+    features: ["Everything in Core", "Bi-weekly 1:1 coaching calls", "Bi-weekly group calls", "Direct Q&A sessions", "Personal feedback on your videos", "Priority content access"],
+    featured: true,
+  },
+];
+
+function WeekGrid() {
+  return (
+    <div className="panel rounded-3xl p-6 md:p-8">
+      <div className="flex items-baseline justify-between">
+        <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">208 weeks · one square per week</div>
+        <div className="font-display text-sm text-white">4 years</div>
+      </div>
+      <div className="mt-6 grid grid-cols-[repeat(26,minmax(0,1fr))] gap-[3px] sm:gap-1">
+        {Array.from({ length: 208 }).map((_, i) => {
+          const phase = PHASES[Math.floor(i / 52)];
+          return <div key={i} className={cn("aspect-square rounded-[2px]", phase.color)} style={{ opacity: 0.35 + ((i % 52) / 52) * 0.65 }} />;
+        })}
+      </div>
+      <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {PHASES.map((p) => (
+          <div key={p.name} className="flex items-center gap-2 text-sm text-white">
+            <span className={cn("h-2.5 w-2.5 rounded-full", p.color)} />
+            Year {p.year} · {p.name}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Nst() {
-  const tiers = [
-    {
-      name: "Core Tier",
-      price: "100",
-      description: "Most People",
-      features: [
-        "208-week curriculum (4 years)",
-        "Global Community Access",
-        "Weekly Curriculum Updates",
-        "Full Content Library Access",
-        "1 Class per week"
-      ],
-      color: "border-primary/20",
-      buttonVariant: "default" as const
-    },
-    {
-      name: "Guided Tier",
-      price: "200",
-      description: "Personalized Support",
-      features: [
-        "Everything in Core",
-        "Bi-weekly Coaching calls",
-        "Bi-weekly Group calls",
-        "Direct Q&A Sessions",
-        "Personal Feedback Loops",
-        "Priority Content Access"
-      ],
-      color: "border-primary glow-cyan",
-      buttonVariant: "default" as const,
-      popular: true
-    }
-  ];
-
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
-        <SectionHeader 
-          title="NST Curriculum" 
-          subtitle="A comprehensive 4-year journey into bilateral motor mastery. Complete the human movement profile."
-        />
+      <PageHero
+        eyebrow="NST · Neuromotor Symmetry Training"
+        title={
+          <>
+            Train the motor cortex, <span className="grad-text">not just the muscles.</span>
+          </>
+        }
+        lead="NST is the applied methodology of Neuromotion. It doesn't force ambidexterity. It restores access to motor patterns that already exist in your nervous system but were never trained. You only have one body, and it's the greatest possession any of us have."
+      >
+        <Reveal delay={0.15} className="mt-10 flex flex-wrap gap-3">
+          <ButtonLink href="#enroll">See plans</ButtonLink>
+          <ButtonLink href="/six-laws" variant="ghost">
+            What you'll learn
+          </ButtonLink>
+        </Reveal>
+      </PageHero>
 
-        <div className="max-w-6xl mx-auto px-6 pb-24">
-          {/* Philosophy Section */}
-          <div className="mb-24 glass-panel p-12 rounded-sm border-white/5 text-center max-w-4xl mx-auto">
-            <Heart className="w-12 h-12 text-primary mx-auto mb-6" />
-            <h2 className="text-4xl font-black uppercase italic mb-6">Your Greatest Possession</h2>
-            <p className="text-xl text-muted-foreground font-medium leading-relaxed italic">
-              "You only have one body and it's the greatest possession any of us have! Neuromotion targets the motor cortex to develop dormant neural pathways and interhemispheric cooperation."
-            </p>
-          </div>
-
-          {/* Registration Requirements */}
-          <section className="mb-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div className="space-y-8">
-              <h2 className="text-4xl font-black uppercase italic tracking-tighter">Customized <span className="text-primary">Curriculum</span></h2>
-              <p className="text-lg text-muted-foreground font-medium leading-relaxed">
-                We provide a personalized path for every student. While the curriculum follows universal laws, it favors activities that pertain to your specific interests and goals.
-              </p>
-              <div className="space-y-4">
-                {[
-                  "Weekly progression videos required",
-                  "Target sport or activity identification",
-                  "Strength & weakness assessment",
-                  "Personal biometric data (Age, Height, Weight)",
-                  "Commitment to the 208-week curriculum"
-                ].map((req, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-primary" />
-                    </div>
-                    <span className="font-bold uppercase tracking-widest text-xs">{req}</span>
+      <Section className="pt-0">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+            <div>
+              <Heading eyebrow="The curriculum" title="Four years. Week by week. Motion by motion." lead="No random workouts. Each phase builds awareness, reinforces alignment and expands capacity, so you feel progress without burning out." />
+              <Reveal className="mt-8 space-y-3">
+                {DEVELOPS.map((d) => (
+                  <div key={d} className="flex items-start gap-3 text-white/90">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-precision" /> {d}
                   </div>
                 ))}
-              </div>
+              </Reveal>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <Card className="glass-panel border-white/5 bg-white/[0.02]">
-                <CardHeader>
-                  <Users className="w-8 h-8 text-primary mb-2" />
-                  <CardTitle className="text-xl font-black uppercase">Youth (6-18)</CardTitle>
-                  <CardDescription>Athletic Performance</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground font-medium">Builds the ultimate athletic foundation, coordination, and mental confidence for competitive sports.</p>
-                </CardContent>
-              </Card>
-              <Card className="glass-panel border-white/5 bg-white/[0.02]">
-                <CardHeader>
-                  <Activity className="w-8 h-8 text-accent mb-2" />
-                  <CardTitle className="text-xl font-black uppercase">Adults (18+)</CardTitle>
-                  <CardDescription>Health & Longevity</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground font-medium">Focused on injury prevention, rehabilitation, and restoring structural balance for lifelong health.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </section>
-
-          {/* Pricing Tiers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-24">
-            {tiers.map((tier) => (
-              <Card key={tier.name} className={`glass-panel border-2 ${tier.color} flex flex-col relative`}>
-                {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-primary text-primary-foreground font-black uppercase tracking-widest px-4 py-1">Recommended</Badge>
-                  </div>
-                )}
-                <CardHeader className="text-center pb-8 border-b border-white/5">
-                  <CardTitle className="text-3xl font-black uppercase italic">{tier.name}</CardTitle>
-                  <CardDescription className="font-bold tracking-widest uppercase text-[10px] mt-2">{tier.description}</CardDescription>
-                  <div className="mt-6 flex items-baseline justify-center gap-1">
-                    <span className="text-5xl font-black italic tracking-tighter">${tier.price}</span>
-                    <span className="text-muted-foreground font-bold uppercase text-xs">/ month</span>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-1 pt-8 space-y-4">
-                  {tier.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                      <span className="text-sm font-medium text-foreground/80">{feature}</span>
-                    </div>
-                  ))}
-                </CardContent>
-                <CardFooter className="pt-8">
-                  <Button className="w-full h-14 font-black uppercase tracking-widest text-xs rounded-sm glow-cyan" variant={tier.buttonVariant}>
-                    Enroll Now
-                  </Button>
-                </CardFooter>
-              </Card>
+            <Reveal>
+              <WeekGrid />
+            </Reveal>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-4">
+            {PHASES.map((p, i) => (
+              <Reveal key={p.name} delay={i * 0.06} className="panel rounded-2xl p-6">
+                <div className="flex items-center gap-2">
+                  <span className={cn("h-2.5 w-2.5 rounded-full", p.color)} />
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Year {p.year}</span>
+                </div>
+                <h3 className="mt-3 font-display text-2xl font-semibold text-white">{p.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
+              </Reveal>
             ))}
           </div>
+        </Container>
+      </Section>
 
-          <div className="text-center p-12 border border-white/5 rounded-sm bg-white/[0.01]">
-            <Info className="w-8 h-8 text-muted-foreground mx-auto mb-4 opacity-50" />
-            <p className="text-muted-foreground font-medium uppercase tracking-widest text-xs leading-relaxed max-w-2xl mx-auto">
-              All students will be challenged with tasks beyond their target sport to ensure complete bilateral motor development. The curriculum remains focused on your primary target while building the universal foundation.
-            </p>
+      <Section>
+        <Container>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Reveal className="panel rounded-3xl p-8">
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-precision">Youth · ages 6–18</div>
+              <h3 className="mt-3 font-display text-3xl font-semibold text-white">Build it right from the start.</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                The ultimate athletic foundation: two-sided coordination, posture that holds, and the confidence that comes
+                from controlling your own body, built while the brain is most adaptable.
+              </p>
+            </Reveal>
+            <Reveal delay={0.06} className="panel rounded-3xl p-8">
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-power">Adults · 18+</div>
+              <h3 className="mt-3 font-display text-3xl font-semibold text-white">Restore what was lost.</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                Injury prevention, recovery support and structural balance for lifelong health. Undo years of one-sided
+                living and get back balance, range, awareness and control.
+              </p>
+            </Reveal>
           </div>
-        </div>
-      </div>
+        </Container>
+      </Section>
+
+      <Section id="enroll">
+        <Container>
+          <Heading align="center" eyebrow="Enroll" title="Choose your path." lead="Your curriculum follows the universal laws but leans toward your own sport, activity and goals." />
+          <div className="mx-auto mt-14 grid max-w-4xl gap-5 md:grid-cols-2">
+            {TIERS.map((t, i) => (
+              <Reveal key={t.name} delay={i * 0.06}>
+                <div className={cn("relative flex h-full flex-col rounded-3xl p-8", t.featured ? "border-2 border-primary/60 bg-primary/[0.05] glow-precision" : "panel")}>
+                  {t.featured && (
+                    <span className="absolute -top-3 left-8 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">Recommended</span>
+                  )}
+                  <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{t.tagline}</div>
+                  <h3 className="mt-2 font-display text-3xl font-semibold text-white">{t.name}</h3>
+                  <div className="mt-6 flex items-baseline gap-1">
+                    <span className="font-display text-6xl font-semibold text-white">${t.price}</span>
+                    <span className="text-muted-foreground">/ month</span>
+                  </div>
+                  <ul className="mt-8 flex-1 space-y-3">
+                    {t.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-sm text-white/90">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-precision" /> {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <ButtonLink href="/contact" variant={t.featured ? "primary" : "ghost"} className="mt-8 w-full">
+                    Enroll in {t.name}
+                  </ButtonLink>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-[1fr_1.2fr]">
+            <Reveal className="rounded-2xl border border-white/[0.08] p-6">
+              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">To register you'll share</div>
+              <ul className="mt-4 space-y-2 text-sm text-white/85">
+                {REQUIREMENTS.map((r) => (
+                  <li key={r} className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-primary" /> {r}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={0.06} className="flex gap-4 rounded-2xl border border-white/[0.08] p-6 text-sm leading-relaxed text-muted-foreground">
+              <Info className="h-5 w-5 shrink-0 text-muted-foreground" />
+              Every student is challenged beyond their target sport to make sure the whole body develops on both sides. The
+              curriculum stays focused on your main goal while building the universal foundation underneath it. NST is
+              education and training, not medical treatment. If you have pain or an injury, work with a qualified clinician.
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
     </Layout>
   );
 }

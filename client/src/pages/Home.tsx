@@ -1,242 +1,360 @@
-import { Layout } from "@/components/Layout";
 import { motion } from "framer-motion";
-import { ArrowRight, Brain, Zap, Scale, Globe, ShieldCheck, Activity, GraduationCap, Heart, Rocket } from "lucide-react";
 import { Link } from "wouter";
-import brainIntegrationImg from "@assets/IMG_0026_1768704291952.jpeg";
-import kidsBenefitsImg from "@assets/IMG_0019_1768704291952.jpeg";
-import adultsBenefitsImg from "@assets/IMG_0020_1768704291952.jpeg";
-import heroSilhouette from "@assets/generated_images/scientific_human_silhouette_anatomical_diagram.png";
+import { ArrowRight, Baby, HeartPulse, Trophy } from "lucide-react";
+import { Layout } from "@/components/Layout";
+import { Container, Section, Heading, Reveal, ButtonLink, Stat, Eyebrow, Cite } from "@/components/kit";
+import { BodyFigure } from "@/components/viz/BodyFigure";
+import { PostureSimulator } from "@/components/viz/PostureSimulator";
+import { HandNerveMap } from "@/components/viz/HandNerveMap";
+import { BrainBridge } from "@/components/viz/BrainBridge";
+import { AsymmetryTimeline } from "@/components/viz/AsymmetryTimeline";
+import { LawGlyph } from "@/components/viz/LawGlyph";
+import { LogoMark } from "@/components/brand/Logo";
+import { LAWS } from "@/data/laws";
+import { cn } from "@/lib/utils";
+
+const CALLOUTS = [
+  { x: 200, y: 58, label: "Two hemispheres", sub: "joined by the corpus callosum", side: "right" as const, tone: "neutral" },
+  { x: 349, y: 488, label: "Median nerve", sub: "Inner Grip · precision", side: "right" as const, tone: "precision" },
+  { x: 51, y: 488, label: "Ulnar nerve", sub: "Outer Grip · power", side: "left" as const, tone: "power" },
+  { x: 200, y: 260, label: "Spinal cord", sub: "the main highway", side: "left" as const, tone: "neutral" },
+  { x: 150, y: 420, label: "The hips", sub: "the Base", side: "left" as const, tone: "neutral" },
+];
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden pt-24 md:pt-28">
+      <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_40%,black,transparent_70%)]" />
+      <div className="pointer-events-none absolute right-[-10%] top-10 h-[700px] w-[700px] rounded-full bg-primary/[0.12] blur-[140px]" />
+      <div className="pointer-events-none absolute right-[20%] top-[40%] h-[400px] w-[400px] rounded-full bg-accent/[0.10] blur-[120px]" />
+      <Container className="relative grid items-center gap-6 lg:grid-cols-[1.1fr_1fr]">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }} className="py-8 lg:py-24">
+          <Eyebrow>Neuromotion · The science of bilateral human movement</Eyebrow>
+          <h1 className="text-balance font-display text-[2.9rem] font-semibold leading-[0.95] text-white sm:text-6xl md:text-7xl xl:text-[5.6rem]">
+            We were never <br className="hidden sm:block" />
+            taught how <span className="grad-text">to move.</span>
+          </h1>
+          <p className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
+            We get up one day and start walking, and then we start favoring one side. Humans are bilateral beings: two
+            hemispheres, two sides, two complete motor systems. The modern world trained us to live on one.
+          </p>
+          <p className="mt-4 max-w-xl text-pretty text-lg font-medium leading-relaxed text-white md:text-xl">
+            Neuromotion is the science of getting the other half back.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <ButtonLink href="/neuromotion">See how it works</ButtonLink>
+            <ButtonLink href="/nst" variant="ghost">
+              Start NST training
+            </ButtonLink>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto aspect-[400/900] h-[78vh] max-h-[860px] min-h-[540px]"
+        >
+          <BodyFigure className="h-full w-full" />
+          {CALLOUTS.map((c, i) => (
+            <motion.div
+              key={c.label}
+              initial={{ opacity: 0, x: c.side === "right" ? -8 : 8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1 + i * 0.15 }}
+              className={cn("absolute hidden items-center gap-2 sm:flex", c.side === "left" ? "flex-row-reverse" : "")}
+              style={{
+                top: `${(c.y / 900) * 100}%`,
+                ...(c.side === "right" ? { left: `${(c.x / 400) * 100}%` } : { right: `${100 - (c.x / 400) * 100}%` }),
+                transform: "translateY(-50%)",
+              }}
+            >
+              <span className="h-px w-10 bg-white/30" />
+              <span
+                className={cn(
+                  "whitespace-nowrap rounded-xl border bg-[#070b14]/80 px-3 py-2 backdrop-blur",
+                  c.tone === "precision" ? "border-primary/40" : c.tone === "power" ? "border-accent/40" : "border-white/15",
+                )}
+              >
+                <span className={cn("block text-[13px] font-semibold", c.tone === "precision" ? "text-precision" : c.tone === "power" ? "text-power" : "text-white")}>
+                  {c.label}
+                </span>
+                <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">{c.sub}</span>
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </Container>
+    </section>
+  );
+}
+
+function BilateralBeings() {
+  const pairs = [
+    {
+      k: "2",
+      title: "Hemispheres",
+      body: "Each half of the brain mainly drives the opposite side of the body, and about 200 million fibers connect them.",
+      cite: "statpearlsCC",
+    },
+    {
+      k: "2 × 2",
+      title: "Grip chains",
+      body: "Every side has an Inner (precision) chain and an Outer (power) chain, wired by different nerves.",
+      cite: "napier1956",
+    },
+    {
+      k: "2",
+      title: "Bases",
+      body: "Either hip can ground you and either leg can drive you, but most of us only ever trust one.",
+      cite: "khayambashi2016",
+    },
+  ];
+  return (
+    <Section>
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+          <Heading
+            eyebrow="The problem nobody named"
+            title={
+              <>
+                Bilateral beings. <span className="text-power">Single-lateral</span> lives.
+              </>
+            }
+            lead="Nobody ever taught human movement. We were never taught balance, or how to tap into the side that isn't weak, just neglected. So we lean on one hip, anchor with one arm and favor one leg until it becomes who we are."
+          />
+          <div className="grid gap-4 sm:grid-cols-3 lg:mt-10">
+            {pairs.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.08} className="panel rounded-2xl p-6">
+                <div className="font-display text-5xl font-semibold text-white">{p.k}</div>
+                <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-precision">{p.title}</div>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {p.body}
+                  <Cite id={p.cite} />
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+function Stats() {
+  return (
+    <Section className="py-16 md:py-20">
+      <Container>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Stat value="~90%" label="of humans favor the right hand, a ratio unchanged since the Neandertals." cite="papadatou2020" tone="precision" />
+          <Stat value="619M" label="people live with low back pain, the world's leading cause of disability." cite="gbd2023lbp" tone="power" />
+          <Stat value="1 in 5" label="U.S. adults live with chronic pain." cite="rikard2023" tone="power" />
+          <Stat value="+11.9%" label="strength gained by the untrained limb when only the other side trains. The sides are linked." cite="manca2017" tone="precision" />
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+function LawsPreview() {
+  return (
+    <Section>
+      <Container>
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <Heading
+            eyebrow="A universal language for movement"
+            title={
+              <>
+                Movement is governed by <span className="text-precision">six laws.</span>
+              </>
+            }
+            lead="Base. Anchor. Inner Grip. Outer Grip. Ambi Curve. Dynamic Balance. Learn them once and you can read every movement you make, from walking and writing to lifting and competing, and correct it for life."
+          />
+          <Reveal>
+            <ButtonLink href="/six-laws" variant="ghost">
+              Explore the Six Laws
+            </ButtonLink>
+          </Reveal>
+        </div>
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {LAWS.map((law, i) => (
+            <Reveal key={law.n} delay={(i % 3) * 0.06}>
+              <Link href={`/six-laws#law-${law.n}`} className="panel group flex h-full gap-5 rounded-2xl p-5 transition-colors hover:border-white/20">
+                <LawGlyph law={law.n} className="h-20 w-20 shrink-0" />
+                <div>
+                  <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Law {law.n} · {law.role}
+                  </div>
+                  <div className={cn("mt-1 font-display text-xl font-semibold", law.tone === "precision" ? "text-precision" : law.tone === "power" ? "text-power" : "text-white")}>
+                    {law.name}
+                  </div>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{law.short}</p>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+function Audiences() {
+  const items = [
+    {
+      icon: Baby,
+      title: "Kids & teens",
+      tone: "precision",
+      body: "Start before asymmetry sets in. Early, two-sided training prevents postural imbalance, coordination gaps and compensation before they become permanent, and the young brain's bridge is most responsive.",
+      cite: "steele2013",
+    },
+    {
+      icon: HeartPulse,
+      title: "Adults",
+      tone: "power",
+      body: "Restore what years of one-sided living took away: balance, range, awareness and control. Reverse the compensation instead of managing it forever.",
+      cite: "draganski2004",
+    },
+    {
+      icon: Trophy,
+      title: "Athletes",
+      tone: "neutral",
+      body: "Athletes break faster because the loads are higher. Correcting strength imbalances lowers injury risk, and a true second side is the rarest skill in sport.",
+      cite: "croisier2008",
+    },
+  ];
+  return (
+    <Section>
+      <Container>
+        <Heading align="center" eyebrow="Same laws, different entry points" title="Built for every body." />
+        <div className="mt-14 grid gap-4 md:grid-cols-3">
+          {items.map((it, i) => (
+            <Reveal key={it.title} delay={i * 0.08} className="panel rounded-3xl p-8">
+              <it.icon className={cn("h-8 w-8", it.tone === "precision" ? "text-precision" : it.tone === "power" ? "text-power" : "text-white")} />
+              <h3 className="mt-6 font-display text-2xl font-semibold text-white">{it.title}</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                {it.body}
+                <Cite id={it.cite} />
+              </p>
+            </Reveal>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+function FinalCta() {
+  return (
+    <Section className="pb-28">
+      <Container>
+        <Reveal className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#0b1a2c] via-[#0a1120] to-[#1d1209] px-6 py-20 text-center md:px-16">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px]" />
+          <LogoMark className="relative mx-auto h-20 w-20 text-white" glow />
+          <h2 className="relative mt-8 font-display text-5xl font-semibold italic text-white md:text-7xl">
+            Do it <span className="text-precision">right.</span>
+          </h2>
+          <p className="relative mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Neuromotion doesn't add something new. It activates what was always there: the other side of your body, the
+            other side of your brain, and the bridge between them.
+          </p>
+          <div className="relative mt-10 flex flex-wrap justify-center gap-3">
+            <ButtonLink href="/nst">Begin NST</ButtonLink>
+            <ButtonLink href="/donate" variant="power">
+              Fund the research
+            </ButtonLink>
+          </div>
+        </Reveal>
+      </Container>
+    </Section>
+  );
+}
 
 export default function Home() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden pt-4">
-        <div className="absolute inset-0 -z-20 opacity-60 flex items-center justify-center pointer-events-none">
-           <img 
-             src={heroSilhouette} 
-             alt="Scientific Silhouette" 
-             className="w-full h-full max-w-[1200px] object-contain mix-blend-lighten"
-             style={{ filter: 'brightness(2.5) contrast(1.8)' }}
-           />
-        </div>
+      <Hero />
+      <BilateralBeings />
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center relative z-10"
-        >
-          <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-black tracking-[0.3em] text-primary uppercase bg-primary/10 border border-primary/20 rounded-full glow-cyan">
-            A Global Neurological Discovery
-          </span>
-          <h1 className="font-display text-6xl md:text-8xl font-black tracking-tighter text-foreground mb-4 leading-[0.9] uppercase italic">
-            Human Movement<br/>
-            <span className="text-primary text-glow-cyan text-5xl md:text-7xl">Unlocked</span>
-          </h1>
-          <p className="font-display text-2xl md:text-4xl text-foreground font-bold max-w-4xl mx-auto leading-tight mb-12 uppercase tracking-tighter">
-            Unlock your body's second engine. <span className="text-accent italic">Bilateral Mastery through Neuromotion.</span>
-          </p>
-        </motion.div>
+      <Section className="pt-8">
+        <Container>
+          <Heading
+            eyebrow="Watch it happen"
+            tone="power"
+            title={
+              <>
+                What one-sided living does to a body.
+              </>
+            }
+            lead="Drag the slider. This is the quiet process behind the tilted neck, the rounded back and the favored hip we see every day. It isn't sudden and it isn't random: the body adapts to how it is used."
+          />
+          <Reveal className="mt-12">
+            <PostureSimulator />
+          </Reveal>
+        </Container>
+      </Section>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed space-y-8"
-        >
-          <div className="py-12 px-8 glass-panel border-primary/20 bg-primary/5 rounded-sm mb-12">
-            <h3 className="text-primary font-black uppercase tracking-widest text-xs mb-4">What Neuromotion Actually Trains</h3>
-            <p className="text-xl text-foreground font-bold leading-relaxed">
-              Neuromotion is the conscious training of how energy moves through both sides of the human body — from the base, through the spine, and into action — restoring bilateral balance, coordination, and control.
-            </p>
-          </div>
+      <Stats />
 
-          <p className="font-medium text-xl text-foreground/80">
-            Neuromotion is completion—activating what was always there. Your body is your greatest possession. 
-            We bridge the hemispheres to unlock the next stage of human evolution.
-          </p>
-          
-          <div className="pt-8 flex flex-col sm:flex-row justify-center gap-6">
-            <Link 
-              href="/nst" 
-              className="inline-flex items-center justify-center px-10 py-5 rounded-sm bg-primary text-primary-foreground font-black uppercase tracking-widest glow-cyan hover:scale-105 transition-all duration-300"
-            >
-              Start Training <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-            <Link 
-              href="/neuromotion"
-              className="inline-flex items-center justify-center px-10 py-5 rounded-sm border-2 border-white/10 text-foreground font-black uppercase tracking-widest hover:bg-white/5 transition-all duration-300"
-            >
-              Master the Science
-            </Link>
-          </div>
-        </motion.div>
-      </section>
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="It's in your hands, literally"
+            title={
+              <>
+                Two nerves. <span className="text-precision">Precision</span> and <span className="text-power">power.</span>
+              </>
+            }
+            lead="Neuromotion didn't invent the two grips. Science has described them since 1956. Neuromotion organizes them into a system you can feel, train and use."
+          />
+          <Reveal className="mt-12">
+            <HandNerveMap />
+          </Reveal>
+        </Container>
+      </Section>
 
-      {/* Explanatory Bridge Section */}
-      <section className="mt-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-          <div className="space-y-8">
-            <h2 className="text-5xl font-black uppercase italic tracking-tighter leading-none">
-              Modern Life Is <br/><span className="text-accent">Asymmetrical</span>
-            </h2>
-            <p className="text-xl text-muted-foreground font-medium leading-relaxed">
-              Modern life has reduced human movement to repetition and compensation. Neuromotion addresses the neurological cost of asymmetry in a one-sided world. It's not just exercise—it's literacy.
-            </p>
-          </div>
-          <div className="p-8 glass-panel border-white/5 rounded-sm">
-            <h3 className="text-primary font-black uppercase tracking-widest text-xs mb-4">The Lens</h3>
-            <p className="text-lg font-bold italic text-foreground">
-              Neuromotion is always "on." Once learned, it becomes the lens through which you walk, sit, reach, and sleep. It is not something you quit; it is how you live.
-            </p>
-          </div>
-        </div>
-      </section>
+      <LawsPreview />
 
-      {/* Six Laws Teaser */}
-      <section className="mt-32 py-20 bg-white/[0.02] border-y border-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-8 tracking-tighter">
-            Movement Is Governed by <span className="text-primary">Six Laws</span>
-          </h2>
-          <p className="text-xl text-muted-foreground font-medium mb-12">
-            Balance, precision, power, curvature, stabilization, and timing are not random. Neuromotion identifies and trains the six laws that govern all human movement—whether you are walking, working, or competing.
-          </p>
-          <Link 
-            href="/neuromotion" 
-            className="inline-flex items-center text-primary font-black uppercase tracking-widest hover:gap-4 transition-all"
-          >
-            Explore The Laws <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-        </div>
-      </section>
+      <Section>
+        <Container>
+          <Heading
+            eyebrow="Structural cognition"
+            title={
+              <>
+                The brain develops <span className="grad-text">through the body.</span>
+              </>
+            }
+            lead="Every movement is neurological. When you train the side you neglected, you train the hemisphere that drives it, and the bridge that joins the two."
+          />
+          <Reveal className="mt-12">
+            <BrainBridge />
+          </Reveal>
+        </Container>
+      </Section>
 
-      {/* Brain Integration Section */}
-      <section className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-5xl font-black mb-8 uppercase leading-none italic">Structural<br/><span className="text-primary text-glow-cyan">Cognition</span></h2>
-          <div className="p-6 glass-panel border-primary/20 bg-primary/5 rounded-sm mb-8">
-            <p className="text-xl text-foreground font-bold italic leading-relaxed">
-              The brain develops through the body.
-            </p>
-          </div>
-          <p className="text-muted-foreground text-xl leading-relaxed mb-8 font-medium">
-            When movement becomes symmetrical, neural signaling becomes more efficient—improving focus, coordination, confidence, and recovery. Cognitive benefits are structural, not theoretical.
-          </p>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="p-6 glass-panel border-white/5">
-              <h4 className="font-black text-primary uppercase text-xs mb-2 tracking-widest">Inner Grip</h4>
-              <p className="text-[10px] uppercase font-bold text-muted-foreground">Precision & Sequencing</p>
+      <Section>
+        <Container>
+          <div className="grid gap-16 lg:grid-cols-[1fr_1.4fr]">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <Heading
+                eyebrow="Why now"
+                tone="power"
+                title="How we became one-sided."
+                lead="A slight preference is ancient. Tools, machines, schools and screens turned it into a lifelong, one-sided habit, and the cost is showing up in our spines, hips and joints."
+              />
+              <Reveal className="mt-8">
+                <Link href="/why-now" className="inline-flex items-center gap-2 font-semibold text-white hover:text-precision">
+                  Read the full story <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Reveal>
             </div>
-            <div className="p-6 glass-panel border-white/5">
-              <h4 className="font-black text-accent uppercase text-xs mb-2 tracking-widest">Outer Grip</h4>
-              <p className="text-[10px] uppercase font-bold text-muted-foreground">Power & Flow</p>
-            </div>
+            <AsymmetryTimeline compact />
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="relative group"
-        >
-          <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 group-hover:bg-primary/30 transition-all" />
-        </motion.div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Benefits for Kids & Adults */}
-      <section className="mt-20 space-y-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative group"
-          >
-            <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
-            <img 
-              src={kidsBenefitsImg} 
-              alt="Benefits for Kids" 
-              className="rounded-sm border border-white/10 shadow-2xl mix-blend-lighten" 
-              style={{ filter: 'contrast(1.1) brightness(1.1)' }}
-            />
-          </motion.div>
-          <div>
-            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-primary">Youth</span> Development</h3>
-            <p className="text-lg text-foreground font-bold mb-6 italic">
-              Early Neuromotion training helps prevent postural imbalance, coordination gaps, and chronic compensation before they become permanent.
-            </p>
-            <div className="space-y-8">
-              <div className="flex gap-6">
-                <GraduationCap className="w-10 h-10 text-primary flex-shrink-0" />
-                <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Curriculum Mastery</h4>
-                  <p className="text-muted-foreground font-medium">A 208-week journey (ages 6-18) that prevents asymmetry and builds absolute coordination through customized training.</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <ShieldCheck className="w-10 h-10 text-primary flex-shrink-0" />
-                <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Embodied Confidence</h4>
-                  <p className="text-muted-foreground font-medium">Confidence through control. Students master their bodies to unlock their true cognitive potential.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1">
-            <h3 className="text-4xl font-black uppercase mb-8 italic"><span className="text-accent">Adult</span> Health</h3>
-            <p className="text-lg text-foreground font-bold mb-6 italic">
-              For adults, Neuromotion restores awareness, balance, and control that was lost through years of unilateral living.
-            </p>
-            <div className="space-y-8">
-              <div className="flex gap-6">
-                <Heart className="w-10 h-10 text-accent flex-shrink-0" />
-                <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Injury Prevention</h4>
-                  <p className="text-muted-foreground font-medium">Focused on restoration and balance. Learn to identify compensation before pain starts.</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <Activity className="w-10 h-10 text-accent flex-shrink-0" />
-                <div>
-                  <h4 className="font-black uppercase tracking-tighter text-xl">Active Restoration</h4>
-                  <p className="text-muted-foreground font-medium">Recover lost capacity and regain structural symmetry for lifelong mobility and clarity.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <motion.div 
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative group order-1 md:order-2"
-          >
-            <div className="absolute inset-0 bg-accent/10 blur-3xl -z-10" />
-            <img 
-              src={adultsBenefitsImg} 
-              alt="Benefits for Adults" 
-              className="rounded-sm border border-white/10 shadow-2xl mix-blend-lighten" 
-              style={{ filter: 'contrast(1.1) brightness(1.1)' }}
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Slogan */}
-      <section className="mt-20 text-center py-10 border-y border-white/5">
-        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic mb-4">
-          Do it <span className="text-primary text-glow-cyan italic">Right.</span>
-        </h2>
-        <p className="text-muted-foreground font-black uppercase tracking-[0.5em] text-xs">The Global Standard</p>
-      </section>
+      <Audiences />
+      <FinalCta />
     </Layout>
   );
 }

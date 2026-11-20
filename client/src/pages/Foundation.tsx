@@ -1,81 +1,44 @@
+import { Globe, Scale, ShieldCheck, Landmark } from "lucide-react";
 import { Layout } from "@/components/Layout";
-import { SectionHeader } from "@/components/SectionHeader";
-import { Landmark, ShieldCheck, Globe, Scale, Heart } from "lucide-react";
-import { motion } from "framer-motion";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { Container, Section, Reveal, ButtonLink, PageHero } from "@/components/kit";
 
 export default function Foundation() {
   return (
     <Layout>
-      <div className="flex flex-col items-center text-center max-w-5xl mx-auto py-12">
-        <motion.div 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="w-24 h-24 bg-primary/10 rounded-sm border border-primary/20 flex items-center justify-center mb-10 glow-cyan"
-        >
-          <Landmark className="w-12 h-12 text-primary" />
-        </motion.div>
-        
-        <SectionHeader 
-          title="Ambi Research Foundation" 
-          subtitle="The global authority dedicated to independent research, education, and public awareness of Neuromotion."
-          align="center"
-        />
-
-        <div className="prose prose-invert prose-lg text-foreground/80 mb-12 max-w-4xl">
-          <p className="font-medium text-xl leading-relaxed">
-            This is a research-first initiative. We are dedicated to exploring the untapped potential
-            of the human motor system through rigorous scientific inquiry and open collaboration. 
-            <span className="text-primary font-black uppercase tracking-widest block mt-4">The Global Standard for Bilateral Literacy.</span>
-          </p>
-        </div>
-
-        <Link href="/donate">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-black uppercase tracking-[0.2em] mb-20 group h-14 px-10 rounded-sm">
-            <Heart className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform" />
-            Support the Research
-          </Button>
-        </Link>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-          {[
-            { 
-              icon: Globe, 
-              title: "Global Funding", 
-              desc: "Supporting exploratory studies in biomechanics and neuroscience across continents." 
-            },
-            { 
-              icon: Scale, 
-              title: "Educational Reform", 
-              desc: "Promoting balanced motor development in global education and professional athletics." 
-            },
-            { 
-              icon: ShieldCheck, 
-              title: "Literacy Access", 
-              desc: "Making neuromotor literacy accessible as a fundamental human health right." 
-            },
-            { 
-              icon: Landmark, 
-              title: "Ethical Standards", 
-              desc: "Ensuring open, ethical research practices for the benefit of all humanity." 
-            }
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-panel p-10 rounded-sm border-white/5 text-left group hover:border-primary/50 transition-all"
-            >
-              <item.icon className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-2xl font-display font-black mb-4 uppercase tracking-tighter">{item.title}</h3>
-              <p className="text-muted-foreground font-medium leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      <PageHero
+        eyebrow="Ambi Research Foundation"
+        title={
+          <>
+            Research first. <span className="grad-text">Literacy for everyone.</span>
+          </>
+        }
+        lead="The Ambi Research Foundation exists to support independent research, education and public awareness of Neuromotion: to test it rigorously, teach it widely, and make neuromotor literacy accessible to every body."
+      >
+        <Reveal delay={0.15} className="mt-10 flex flex-wrap gap-3">
+          <ButtonLink href="/donate">Support the research</ButtonLink>
+          <ButtonLink href="/research" variant="ghost">
+            See the research agenda
+          </ButtonLink>
+        </Reveal>
+      </PageHero>
+      <Section className="pt-0">
+        <Container>
+          <div className="grid gap-4 md:grid-cols-2">
+            {[
+              { icon: Globe, title: "Fund exploratory studies", desc: "Motion capture, EEG, TMS and long-term studies in biomechanics and neuroscience." },
+              { icon: Scale, title: "Promote balanced development", desc: "Bring bilateral motor development into schools, youth sports and professional athletics." },
+              { icon: ShieldCheck, title: "Make literacy accessible", desc: "Free educational content and scholarships, so neuromotor literacy isn't only for those who can pay." },
+              { icon: Landmark, title: "Support ethical, open research", desc: "Transparent methods, honest reporting, and collaboration with independent scientists." },
+            ].map((it, i) => (
+              <Reveal key={it.title} delay={i * 0.06} className="panel rounded-3xl p-8">
+                <it.icon className="h-8 w-8 text-precision" />
+                <h3 className="mt-6 font-display text-2xl font-semibold text-white">{it.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{it.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
     </Layout>
   );
 }
