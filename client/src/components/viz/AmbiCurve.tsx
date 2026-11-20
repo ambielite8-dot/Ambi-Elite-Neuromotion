@@ -10,8 +10,8 @@ type Mode = "dominant" | "dormant" | "both";
 const ARC: [number, number][] = [
   [38, 878], [40, 760], [44, 650], [48, 540], [46, 472], [22, 424], [-6, 360], [-40, 286], [-80, 222], [-104, 214], [-118, 300], [-130, 380], [-142, 452], [-146, 504],
 ];
-const DOMINANT = smooth(ARC, 1);
-const DORMANT = smooth(ARC, -1);
+export const DOMINANT = smooth(ARC, 1);
+export const DORMANT = smooth(ARC, -1);
 
 const COPY: Record<Mode, { title: string; body: string }> = {
   dominant: {

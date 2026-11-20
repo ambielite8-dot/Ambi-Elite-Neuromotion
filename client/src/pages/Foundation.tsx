@@ -6,6 +6,7 @@ export default function Foundation() {
   return (
     <Layout>
       <PageHero
+        brand="ambi"
         eyebrow="Ambi Research Foundation"
         title={
           <>

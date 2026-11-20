@@ -23,6 +23,7 @@ export default function Contact() {
   return (
     <Layout>
       <PageHero
+        brand="ambi"
         eyebrow="Contact"
         title={
           <>

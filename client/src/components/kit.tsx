@@ -3,6 +3,10 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { REFERENCES } from "@/data/references";
+import { CountUp } from "@/components/motion/effects";
+import { NeuralField } from "@/components/motion/NeuralField";
+import { NeuromotionMark } from "@/components/brand/NeuromotionMark";
+import { LogoMark } from "@/components/brand/Logo";
 
 export function Container({ className, children }: { className?: string; children: React.ReactNode }) {
   return <div className={cn("mx-auto w-full max-w-7xl px-5 md:px-8", className)}>{children}</div>;
@@ -169,7 +173,9 @@ export function Stat({
   const color = tone === "precision" ? "text-precision" : tone === "power" ? "text-power" : "text-white";
   return (
     <div className="panel rounded-2xl p-6">
-      <div className={cn("font-display text-4xl font-semibold tracking-tight md:text-5xl", color)}>{value}</div>
+      <div className={cn("font-display text-4xl font-semibold tracking-tight md:text-5xl", color)}>
+        <CountUp value={value} />
+      </div>
       <div className="mt-3 text-sm leading-relaxed text-muted-foreground">
         {label}
         {cite && <Cite id={cite} />}
@@ -225,21 +231,39 @@ export function PageHero({
   title,
   lead,
   children,
+  brand = "neuromotion",
 }: {
   eyebrow: string;
   tone?: "precision" | "power" | "neutral";
   title: React.ReactNode;
   lead?: React.ReactNode;
   children?: React.ReactNode;
+  brand?: "neuromotion" | "ambi";
 }) {
   return (
-    <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40">
-      <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
+    <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-44">
+      {brand === "neuromotion" ? (
+        <>
+          <div className="absolute inset-0 opacity-60">
+            <NeuralField className="h-full w-full" density={0.55} />
+          </div>
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(7,11,20,0.55),#070b14_75%)]" />
+        </>
+      ) : (
+        <>
+          <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+          <LogoMark className="pointer-events-none absolute -right-20 top-10 h-[560px] w-[560px] text-white opacity-[0.035] md:right-0" />
+        </>
+      )}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
       <Container className="relative">
         <Reveal>
+          <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-black/30 py-1.5 pl-2 pr-4 backdrop-blur">
+            {brand === "neuromotion" ? <NeuromotionMark className="h-5 w-5" /> : <LogoMark className="h-5 w-5 text-white" />}
+            <span className="font-mono text-[10px] uppercase tracking-[0.26em] text-white/70">{brand === "neuromotion" ? "Neuromotion" : "Ambi Elite"}</span>
+          </div>
           <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
-          <h1 className="max-w-4xl text-balance font-display text-5xl font-semibold leading-[0.98] text-white md:text-7xl">
+          <h1 className="max-w-5xl text-balance font-display text-5xl font-semibold leading-[0.96] tracking-[-0.04em] text-white md:text-7xl xl:text-[5.4rem]">
             {title}
           </h1>
           {lead && <p className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">{lead}</p>}

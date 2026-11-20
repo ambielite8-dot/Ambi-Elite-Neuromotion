@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { LogoMark } from "@/components/brand/Logo";
-import { PRIMARY_NAV, SECONDARY_NAV } from "@/components/Navigation";
+import { NEUROMOTION_NAV, AMBI_NAV } from "@/components/Navigation";
+import { NeuromotionMark } from "@/components/brand/NeuromotionMark";
 
 export function Footer() {
   return (
@@ -25,9 +26,11 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Learn</div>
+            <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+              <NeuromotionMark className="h-5 w-5" animated={false} /> Neuromotion
+            </div>
             <ul className="mt-4 space-y-2.5">
-              {PRIMARY_NAV.map((i) => (
+              {NEUROMOTION_NAV.map((i) => (
                 <li key={i.href}>
                   <Link href={i.href} className="text-sm text-white/80 hover:text-white">
                     {i.label}
@@ -37,9 +40,11 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Ambi Elite</div>
+            <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+              <LogoMark className="h-4 w-4 text-white" /> Ambi Elite
+            </div>
             <ul className="mt-4 space-y-2.5">
-              {[...SECONDARY_NAV, { href: "/donate", label: "Donate" }].map((i) => (
+              {[...AMBI_NAV, { href: "/contact", label: "Contact" }, { href: "/donate", label: "Donate" }].map((i) => (
                 <li key={i.href}>
                   <Link href={i.href} className="text-sm text-white/80 hover:text-white">
                     {i.label}

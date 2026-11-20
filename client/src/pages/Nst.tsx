@@ -72,6 +72,7 @@ export default function Nst() {
   return (
     <Layout>
       <PageHero
+        brand="ambi"
         eyebrow="NST · Neuromotor Symmetry Training"
         title={
           <>

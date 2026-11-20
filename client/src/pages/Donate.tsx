@@ -8,6 +8,7 @@ export default function Donate() {
   return (
     <Layout>
       <PageHero
+        brand="ambi"
         eyebrow="Support the mission"
         tone="power"
         title={
